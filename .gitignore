@@ -1,0 +1,5 @@
+# python预编译的文件
+**/__pycache__
+
+# 数据库文件
+db.sqlite3
