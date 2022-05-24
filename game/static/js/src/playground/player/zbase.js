@@ -74,14 +74,17 @@ class Player extends AcGameObject {
 
         // 监听鼠标右键点击事件，获取鼠标位置
         this.playground.game_map.$canvas.mousedown(function (e) {
-
             // 项目在acapp的小窗口上运行会有坐标值的不匹配的问题，这里做一下坐标映射
             // 这里canvas前面不能加$，会报错
             const rect = outer.ctx.canvas.getBoundingClientRect();
+            let tx = (e.clientX - rect.left) / outer.playground.scale;
+            let ty = (e.clientY - rect.top) / outer.playground.scale;
             if (e.which === 3) {
-                console.log("click right");
+                console.log("click right:", tx, ty);
             } else if (e.which === 1) {
-                console.log("click left");
+                console.log("click left:", tx, ty);
+                outer.x = tx;
+                outer.y = ty;
             }
         });
 

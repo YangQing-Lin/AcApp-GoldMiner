@@ -300,7 +300,10 @@ class Settings {
 
                     // 打开菜单界面
                     outer.hide();
-                    outer.root.menu.show();
+
+                    // 暂时不显示菜单界面，直接显示游戏界面
+                    // outer.root.menu.show();
+                    outer.root.playground.show();
                 } else {
                     outer.login();
                 }
