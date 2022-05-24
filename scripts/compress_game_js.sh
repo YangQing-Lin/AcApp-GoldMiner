@@ -4,8 +4,10 @@ JS_PATH=/home/gold/AcApp-GoldMiner/game/static/js/
 JS_PATH_DIST=${JS_PATH}dist/
 JS_PATH_SRC=${JS_PATH}src/
 
-# find . $JS_PATH_SRC -type f -name '*.js' | sort | xargs cat > ${JS_PATH_DIST}game-version-1.3.js
-find . $JS_PATH_SRC -type f -name '*.js' | sort | xargs cat | terser -c -m > ${JS_PATH_DIST}game-version-1.3.js
+JS_FILE_NAME=game-version-1.1.js
+
+find . $JS_PATH_SRC -type f -name '*.js' | sort | xargs cat > ${JS_PATH_DIST}${JS_FILE_NAME}
+# find . $JS_PATH_SRC -type f -name '*.js' | sort | xargs cat | terser -c -m > ${JS_PATH_DIST}${JS_FILE_NAME}
 
 # 归档静态文件
 echo yes | python3 /home/gold/AcApp-GoldMiner/manage.py collectstatic

@@ -11,7 +11,7 @@ def get_state():
     return res
 
 def apply_code(request):
-    appid = "109"
+    appid = "1695"
     # 替换链接中的特殊字符
     redirect_uri = quote("https://app1695.acapp.acwing.com.cn:4434/settings/acwing/acapp/receive_code/")
     scope = "userinfo"
