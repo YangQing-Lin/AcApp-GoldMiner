@@ -12,10 +12,6 @@ class AcGamePlayground {
         this.start();
     }
 
-    add_enemy() {
-        this.players.push(new Player(this, this.width / 2 / this.scale, 0.5, 0.05, this.get_random_color(), 0.15, "robot"));
-    }
-
     get_random_color() {
         let colors = ["blue", "red", "pink", "grey", "green"];
         return colors[Math.floor(Math.random() * colors.length)];
@@ -67,8 +63,8 @@ class AcGamePlayground {
     resize() {
         this.width = this.$playground.width();
         this.height = this.$playground.height();
-        let unit = Math.min(this.width / 16, this.height / 9);
-        this.width = unit * 16;
+        let unit = Math.min(this.width / 12, this.height / 9);
+        this.width = unit * 12;
         this.height = unit * 9;
 
         // 基准
@@ -95,7 +91,7 @@ class AcGamePlayground {
 
         this.players = [];
         // 绘制玩家
-        this.players.push(new Player(this, this.width / 2 / this.scale, 0.5, 0.05, "white", 0.15, "me", this.root.settings.username, this.root.settings.photo));
+        this.players.push(new Player(this, this.width / 2 / this.scale, 4 / 16, 0.03, "me", this.root.settings.username, this.root.settings.photo));
     }
 
     hide() {  // 关闭playground界面

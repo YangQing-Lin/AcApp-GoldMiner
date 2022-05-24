@@ -1,35 +1,14 @@
 class Player extends AcGameObject {
-    constructor(playground, x, y, radius, color, speed, character, username, photo) {
+    constructor(playground, x, y, radius, character, username, photo) {
         super();
         this.playground = playground;
         this.ctx = this.playground.game_map.ctx;
         this.x = x;
         this.y = y;
-        this.vx = 0;  // x方向的速度
-        this.vy = 0;  // y方向的速度
-        this.damage_x = 0;
-        this.damage_y = 0;
-        this.damage_speed = 0;
-        this.move_length = 0;  // 移动的直线距离
         this.radius = radius;
-        this.color = color;
-        this.base_speed = speed;
-        this.max_speed = this.base_speed * 1.5;  // 玩家最大速度（血量为0时）
-        this.speed = this.base_speed;
         this.character = character;
         this.username = username;
         this.photo = photo;
-        this.hp = 100;
-
-        this.eps = 0.01;
-        this.friction = 0.9;  // 阻尼
-        this.spent_time = 0;
-        this.enemy_cold_time = 3;  // 敌人3秒之后开始战斗
-        this.fireballs = [];  // 自己发出的所有火球
-        this.bullets = [];  // 自己发出的所有子弹
-        this.angle = 0;  // 玩家朝向
-
-        this.cur_skill = null;
 
         if (this.character !== "robot") {
             this.img = new Image();
@@ -38,9 +17,9 @@ class Player extends AcGameObject {
     }
 
     start() {
-        console.log(this.character);
-
         this.add_listening_events();
+
+        this.hook = new Hook(this.playground, this);
     }
 
     create_uuid() {
@@ -80,7 +59,7 @@ class Player extends AcGameObject {
             let tx = (e.clientX - rect.left) / outer.playground.scale;
             let ty = (e.clientY - rect.top) / outer.playground.scale;
             if (e.which === 3) {
-                console.log("click right:", tx, ty);
+                console.log("click right");
             } else if (e.which === 1) {
                 console.log("click left:", tx, ty);
                 outer.x = tx;
@@ -92,6 +71,11 @@ class Player extends AcGameObject {
         // 之前的监听对象：$(window).keydown(function (e) {
         this.playground.game_map.$canvas.keydown(function (e) {
             console.log("key code:", e.which);
+
+            if (e.which === 32) {  // 空格，出勾
+                console.log("tick!!");
+                outer.hook.tick();
+            }
 
             return true;
         });
