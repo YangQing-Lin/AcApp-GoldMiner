@@ -90,8 +90,13 @@ class AcGamePlayground {
         this.resize();
 
         this.players = [];
+        this.miners = [];
+
         // 绘制玩家
         this.players.push(new Player(this, this.width / 2 / this.scale, 4 / 16, 0.03, "me", this.root.settings.username, this.root.settings.photo));
+        for (let i = 1; i <= 5; i++) {
+            this.miners.push(new Miner(this, i * 0.1 + 0.3, 0.6));
+        }
     }
 
     hide() {  // 关闭playground界面

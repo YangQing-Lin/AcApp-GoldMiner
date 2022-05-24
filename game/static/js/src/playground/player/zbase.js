@@ -62,8 +62,6 @@ class Player extends AcGameObject {
                 console.log("click right");
             } else if (e.which === 1) {
                 console.log("click left:", tx, ty);
-                outer.x = tx;
-                outer.y = ty;
             }
         });
 
@@ -73,7 +71,6 @@ class Player extends AcGameObject {
             console.log("key code:", e.which);
 
             if (e.which === 32) {  // 空格，出勾
-                console.log("tick!!");
                 outer.hook.tick();
             }
 

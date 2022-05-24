@@ -4,8 +4,9 @@ class Hook extends AcGameObject {
         this.playground = playground;
         this.ctx = this.playground.game_map.ctx;
         this.player = player;
-        this.x = 0.5;
-        this.y = 0.8;
+
+        this.x = null;
+        this.y = null;
         this.radius = 0.012;
         this.angle = Math.PI / 2;
         this.direction_flag = 1;  //  1: left  2: right  3: stop-left  4: stop-right
@@ -15,6 +16,7 @@ class Hook extends AcGameObject {
         this.tile_length = this.base_tile_length;
         this.moved = 0;
         this.catched = false;  // 是否抓到东西
+        this.fraction = 0;
 
         this.eps = 0.01;
     }
@@ -24,7 +26,14 @@ class Hook extends AcGameObject {
     }
 
     tick() {
-        this.direction_flag += 2;
+        if (this.catched) {
+            return false;
+        }
+
+        if (this.direction_flag <= 2) {
+            this.direction_flag += 2;
+        }
+
         this.moved = 0.008;
     }
 
@@ -33,6 +42,46 @@ class Hook extends AcGameObject {
         this.update_angle();
         this.update_position();
         this.render();
+        this.update_catch();
+    }
+
+    // 检测是否抓到金矿
+    update_catch() {
+        for (let i = 0; i < this.playground.miners.length; i++) {
+            let miner = this.playground.miners[i];
+            if (this.is_collision(miner)) {
+                this.catch_miner(miner);
+                return miner;
+            }
+        }
+    }
+
+    add_fraction() {
+        let miner = this.update_catch();
+        if (miner) {
+            this.fraction += miner.fraction;
+            miner.destroy();
+            console.log("fraction:", this.fraction);
+        }
+    }
+
+    catch_miner(miner) {
+        miner.x = this.x;
+        miner.y = this.y;
+    }
+
+    get_dist(x1, y1, x2, y2) {
+        let dx = x1 - x2;
+        let dy = y1 - y2;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+
+    is_collision(miner) {
+        let distance = this.get_dist(this.x, this.y, miner.x, miner.y);
+        if (distance < this.radius + miner.radius) {
+            return true;
+        }
+        return false;
     }
 
     update_tile_length() {
@@ -45,8 +94,12 @@ class Hook extends AcGameObject {
             this.moved = 0;
             // 标记为没抓到东西
             this.catched = false;
+            // 更新分数
+            this.add_fraction();
             // 钩子开始转动
-            this.direction_flag -= 2;
+            if (this.direction_flag >= 3) {
+                this.direction_flag -= 2;
+            }
         }
         this.tile_length += this.moved;
     }
