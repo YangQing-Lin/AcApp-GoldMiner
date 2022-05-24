@@ -7,9 +7,10 @@ class AcGameObject {
         this.has_called_start = false;  // 是否执行过start函数
         this.timedelta = 0;  // 当前距离上一帧的时间间隔（单位：ms）
         this.uuid = this.create_uuid();
+        // console.log(this.uuid);
     }
 
-    // 创建一个唯一编号，用于识别每一个对象
+    // 创建一个唯一编号，用于联机对战识别窗口和用户
     create_uuid() {
         let res = "";
         for (let i = 0; i < 8; i++) {
@@ -39,11 +40,13 @@ class AcGameObject {
         this.on_destroy();
 
         for (let i = 0; i < AC_GAME_OBJECTS.length; i++) {
-            if (AC_GAME_OBJECTS[i].uuid === this.uuid) {
+            if (AC_GAME_OBJECTS[i] === this) {
                 AC_GAME_OBJECTS.splice(i, 1);
                 break;
             }
         }
+
+        // console.log(AC_GAME_OBJECTS);
     }
 }
 

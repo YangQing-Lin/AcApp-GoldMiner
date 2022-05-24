@@ -12,6 +12,15 @@ class AcGamePlayground {
         this.start();
     }
 
+    add_enemy() {
+        this.players.push(new Player(this, this.width / 2 / this.scale, 0.5, 0.05, this.get_random_color(), 0.15, "robot"));
+    }
+
+    get_random_color() {
+        let colors = ["blue", "red", "pink", "grey", "green"];
+        return colors[Math.floor(Math.random() * colors.length)];
+    }
+
     // 创建一个唯一编号用来准确移除resize监听函数
     create_uuid() {
         let res = "";
@@ -40,9 +49,10 @@ class AcGamePlayground {
         }
 
         // 查看用户当前使用什么设备登录
-        this.check_operator();
+        this.operator = this.check_operator();
     }
 
+    // 查看用户使用的是移动端还是PC端
     check_operator() {
         let sUserAgent = navigator.userAgent.toLowerCase();
         let pc = sUserAgent.match(/windows/i) == "windows";
@@ -57,21 +67,18 @@ class AcGamePlayground {
     resize() {
         this.width = this.$playground.width();
         this.height = this.$playground.height();
-        let unit = Math.min(this.width / 8, this.height / 7);
-        this.width = unit * 8;
-        this.height = unit * 7;
+        let unit = Math.min(this.width / 16, this.height / 9);
+        this.width = unit * 16;
+        this.height = unit * 9;
 
         // 基准
         this.scale = this.height;
-        MAGNIFICATION = this.height / BASE_SCREEN_HEIGHT;
-        SCREEN_WIDTH = BASE_SCREEN_WIDTH * MAGNIFICATION;
-        SCREEN_HEIGHT = BASE_SCREEN_HEIGHT * MAGNIFICATION;
 
         // 调用一下GameMap的resize()
         if (this.game_map) this.game_map.resize();
     }
 
-    show() {  // 打开playground界面
+    show(mode) {  // 打开playground界面
         this.$playground.show();
 
         this.resize();
@@ -79,12 +86,41 @@ class AcGamePlayground {
         this.width = this.$playground.width();
         this.height = this.$playground.height();
         this.game_map = new GameMap(this);
+
+        this.mode = mode;
+        this.state = "waiting";  // waiting -> fighting -> over
+        this.player_count = 0;
+
+        this.resize();
+
+        this.players = [];
+        // 绘制玩家
+        this.players.push(new Player(this, this.width / 2 / this.scale, 0.5, 0.05, "white", 0.15, "me", this.root.settings.username, this.root.settings.photo));
     }
 
     hide() {  // 关闭playground界面
+        while (this.players && this.players.length > 0) {
+            // AcGameObject.destroy() ----> Player.on_destroy()
+            //                          \--> AC_GAME_OBJECTS.splice(i, 1)
+            this.players[0].destroy();
+        }
+
+        if (this.score_board) {
+            this.score_board.destroy();
+            this.score_board = null;
+        }
+
         if (this.game_map) {
             this.game_map.destroy();
+            this.game_map = null;
         }
+
+        if (this.notice_board) {
+            this.notice_board.destroy();
+            this.notice_board = null;
+        }
+
+
 
         // 清空当前的html对象
         this.$playground.empty();
