@@ -1,4 +1,4 @@
-class AcGameMenu {
+export class AcGameMenu {
     // root就是web.html里的ac_game对象
     constructor(root) {
         this.root = root;

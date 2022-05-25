@@ -1,4 +1,6 @@
-class GameMap extends AcGameObject {
+import { AcGameObject } from "/static/js/src/playground/ac_game_objects/zbase.js";
+
+export class GameMap extends AcGameObject {
     constructor(playground) {
         super();  // 调用基类的构造函数
         this.playground = playground;

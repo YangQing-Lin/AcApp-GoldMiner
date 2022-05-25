@@ -1,4 +1,8 @@
-class Player extends AcGameObject {
+import { AcGameObject } from "/static/js/src/playground/ac_game_objects/zbase.js";
+// import { Hook } from "../hook/zbase";
+import { Hook } from "/static/js/src/playground/hook/zbase.js";
+
+export class Player extends AcGameObject {
     constructor(playground, x, y, radius, character, username, photo) {
         super();
         this.playground = playground;

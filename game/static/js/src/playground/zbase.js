@@ -1,4 +1,8 @@
-class AcGamePlayground {
+import { GameMap } from "/static/js/src/playground/game_map/zbase.js";
+import { Player } from "/static/js/src/playground/player/zbase.js";
+import { Miner } from "/static/js/src/playground/miner/zbase.js";
+
+export class AcGamePlayground {
     constructor(root) {
         this.root = root;
         this.$playground = $(`<div class="ac-game-playground"></div>`);

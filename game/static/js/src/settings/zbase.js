@@ -1,4 +1,4 @@
-class Settings {
+export class Settings {
     constructor(root) {
         this.root = root;
         this.platform = "WEB";

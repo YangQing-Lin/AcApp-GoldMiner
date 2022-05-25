@@ -1,4 +1,6 @@
-class Miner extends AcGameObject {
+import { AcGameObject } from "/static/js/src/playground/ac_game_objects/zbase.js";
+
+export class Miner extends AcGameObject {
     constructor(playground, x, y) {
         super();
         this.playground = playground;
