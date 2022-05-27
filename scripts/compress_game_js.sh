@@ -6,7 +6,7 @@ JS_PATH_SRC=${JS_PATH}src/
 
 JS_FILE_NAME=game-version-1.1.js
 
-# find . $JS_PATH_SRC -type f -name '*.js' | sort | xargs cat > ${JS_PATH_DIST}${JS_FILE_NAME}
+find . $JS_PATH_SRC -type f -name '*.js' | sort | xargs cat > ${JS_PATH_DIST}${JS_FILE_NAME}
 # find . $JS_PATH_SRC -type f -name '*.js' | sort | xargs cat | terser -c -m > ${JS_PATH_DIST}${JS_FILE_NAME}
 
 # 归档静态文件
@@ -22,3 +22,6 @@ uwsgi --ini /home/gold/AcApp-GoldMiner/scripts/uwsgi.ini
 # 启动uwsgi服务             uwsgi –-ini scripts/uwsgi.ini
 # 启动django_channels服务   daphne -b 0.0.0.0 -p 5015 acapp.asgi:application
 # 启动匹配系统              （在match_system/src目录下） ./main.py
+
+# src = "/static
+# src = "https://app1695.acapp.acwing.com.cn:4434/static

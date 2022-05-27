@@ -1,12 +1,13 @@
 import { AcGameObject } from "/static/js/src/playground/ac_game_objects/zbase.js";
-// import { Hook } from "../hook/zbase";
 import { Hook } from "/static/js/src/playground/hook/zbase.js";
+import { Bomb } from "/static/js/src/playground/skill/bomb.js";
 
 export class Player extends AcGameObject {
     constructor(playground, x, y, radius, character, username, photo) {
         super();
         this.playground = playground;
         this.ctx = this.playground.game_map.ctx;
+        this.game_background = this.playground.game_map.game_background;
         this.x = x;
         this.y = y;
         this.radius = radius;
@@ -14,16 +15,19 @@ export class Player extends AcGameObject {
         this.username = username;
         this.photo = photo;
 
-        if (this.character !== "robot") {
-            this.img = new Image();
-            this.img.src = this.photo;
-        }
+        this.photo_x = this.x + this.radius * 2;
+        this.photo_y = this.y - this.radius * 0.5;
+        this.money = 0;
+
+        this.img = new Image();
+        this.img.src = this.photo;
+        this.bomb = new Bomb(this.playground, this);
     }
 
     start() {
         this.add_listening_events();
 
-        this.hook = new Hook(this.playground, this);
+        this.hook = new Hook(this.playground, this, this.playground.game_map.score_number);
     }
 
     create_uuid() {
@@ -74,12 +78,30 @@ export class Player extends AcGameObject {
         this.playground.game_map.$canvas.keydown(function (e) {
             console.log("key code:", e.which);
 
-            if (e.which === 32) {  // 空格，出勾
+            if (e.which === 32 || e.which === 40) {  // 空格，出勾
                 outer.hook.tick();
+                return false;
+            } else if (e.which === 38) {  // ↑，放炸弹
+                outer.use_bomb();
+                return false;
             }
 
             return true;
         });
+    }
+
+    use_bomb() {
+        if (this.bomb.number <= 0 || !this.hook.catched) {
+            return false;
+        }
+
+        this.hook.caught_item = "hook";  // 重置钩子图标
+        this.hook.catched = false;  // 没抓到东西
+        // this.hook.direction_flag = 4;  // 定成收回状态（可能不用）（确实不用）
+        this.hook.moved = this.hook.base_moved * 2;  // 重置钩子收回速度
+
+        this.bomb.number -= 1;
+        this.game_background.render();  // 减去炸弹数量之后要刷新一次背景图
     }
 
     // 获取两点之间的直线距离
@@ -97,17 +119,17 @@ export class Player extends AcGameObject {
         let scale = this.playground.scale;
 
         // 如果是自己就画出头像，如果是敌人就用颜色代替
-        if (this.character !== "robot") {
+        if (this.img) {
             this.ctx.save();
             this.ctx.beginPath();
-            this.ctx.arc(this.x * scale, this.y * scale, this.radius * scale, 0, Math.PI * 2, false);
+            this.ctx.arc(this.photo_x * scale, this.photo_y * scale, this.radius * scale, 0, Math.PI * 2, false);
             this.ctx.clip();
-            this.ctx.drawImage(this.img, (this.x - this.radius) * scale, (this.y - this.radius) * scale, this.radius * 2 * scale, this.radius * 2 * scale);
+            this.ctx.drawImage(this.img, (this.photo_x - this.radius) * scale, (this.photo_y - this.radius) * scale, this.radius * 2 * scale, this.radius * 2 * scale);
             this.ctx.restore();
         } else {
             this.ctx.beginPath();
-            this.ctx.arc(this.x * scale, this.y * scale, this.radius * scale, 0, Math.PI * 2, false);
-            this.ctx.fillStyle = this.color;
+            this.ctx.arc(this.photo_x * scale, this.photo_y * scale, this.radius * scale, 0, Math.PI * 2, false);
+            this.ctx.fillStyle = "white";
             this.ctx.fill();
         }
     }

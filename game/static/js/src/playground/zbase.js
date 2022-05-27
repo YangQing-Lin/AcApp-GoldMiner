@@ -1,6 +1,6 @@
 import { GameMap } from "/static/js/src/playground/game_map/zbase.js";
 import { Player } from "/static/js/src/playground/player/zbase.js";
-import { Miner } from "/static/js/src/playground/miner/zbase.js";
+import { Mineral } from "/static/js/src/playground/mineral/zbase.js";
 
 export class AcGamePlayground {
     constructor(root) {
@@ -85,7 +85,7 @@ export class AcGamePlayground {
 
         this.width = this.$playground.width();
         this.height = this.$playground.height();
-        this.game_map = new GameMap(this);
+        this.game_map = new GameMap(this.root, this);
 
         this.mode = mode;
         this.state = "waiting";  // waiting -> fighting -> over
@@ -97,10 +97,7 @@ export class AcGamePlayground {
         this.miners = [];
 
         // 绘制玩家
-        this.players.push(new Player(this, this.width / 2 / this.scale, 4 / 16, 0.03, "me", this.root.settings.username, this.root.settings.photo));
-        for (let i = 1; i <= 5; i++) {
-            this.miners.push(new Miner(this, i * 0.1 + 0.3, 0.6));
-        }
+        this.players.push(new Player(this, this.width / 2 / this.scale, 4.3 / 16, 0.04, "me", "test", "https://cdn.acwing.com/media/user/profile/photo/84494_lg_29c89a778e.jpg"));
     }
 
     hide() {  // 关闭playground界面
