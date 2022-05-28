@@ -1,6 +1,6 @@
-import { Settings } from "/static/js/src/settings/zbase.js";
-import { AcGameMenu } from "/static/js/src/menu/zbase.js";
-import { AcGamePlayground } from "/static/js/src/playground/zbase.js";
+import { Settings } from "https://app1695.acapp.acwing.com.cn:4434/static/js/src/settings/zbase.js";
+import { AcGameMenu } from "https://app1695.acapp.acwing.com.cn:4434/static/js/src/menu/zbase.js";
+import { AcGamePlayground } from "https://app1695.acapp.acwing.com.cn:4434/static/js/src/playground/zbase.js";
 
 export class AcGame {
     constructor(id, AcWingOS) {

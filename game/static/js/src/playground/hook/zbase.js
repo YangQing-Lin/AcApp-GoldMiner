@@ -1,4 +1,3 @@
-// import { AcGameObject } from "../ac_game_objects/zbase";
 import { AcGameObject } from "/static/js/src/playground/ac_game_objects/zbase.js";
 
 export class Hook extends AcGameObject {
@@ -33,14 +32,14 @@ export class Hook extends AcGameObject {
         this.is_start = false;
 
         // 提前定义好的基准值，乘以像素个数来控制图片的大小
-        this.base_scale = this.playground.game_map.game_background.base_scale;
+        this.base_scale = this.playground.base_scale;
         this.eps = 0.01;
-
-        this.load_image();
-        this.add_POS();
     }
 
     start() {
+        this.load_image();
+        this.add_POS();
+
         // 给所有的图片的加载事件绑定一个变量，用于所有图片加载好后直接执行render函数
         // 因为render可能会执行很多次（改变窗口大小），所以不能把绘制图片代码放到onload里面
         for (let img of this.images) {
@@ -91,7 +90,6 @@ export class Hook extends AcGameObject {
         for (let i = 0; i < this.playground.miners.length; i++) {
             let miner = this.playground.miners[i];
             if (this.is_collision(miner)) {
-                this.catch_miner(miner);
                 this.catched = true;
                 return miner;
             }
@@ -104,11 +102,6 @@ export class Hook extends AcGameObject {
         this.score_number.money_number += this.catched_money;
         this.score_number.render();
         console.log("add:", this.catched_money, "all:", this.player.money);
-    }
-
-    catch_miner(miner) {
-        miner.x = this.x;
-        miner.y = this.y;
     }
 
     get_dist(x1, y1, x2, y2) {
@@ -140,11 +133,18 @@ export class Hook extends AcGameObject {
                 if (miner) {
                     this.catched_money = miner.money;
                     this.caught_item = "hook_" + miner.name;
-                    this.moved = this.base_moved * ((200 - miner.weight) / 200);
-                    // 抓到矿物之后删除它，然后刷新游戏背景
-                    this.playground.game_map.game_background.render();
                     miner.is_catched = true;
-                    miner.destroy();
+                    if (miner.name === "tnt") {  // 如果抓到了tnt要进行一个特判
+                        this.caught_item = "hook_tnt_fragment";
+                        // TODO 加入TNT爆炸动画和消除一定范围内的矿物
+                        miner.explode_tnt();
+                    } else {
+                        miner.destroy();
+                    }
+                    // 根据矿物的质量调整收钩速度
+                    this.moved = this.base_moved * ((Math.abs(1000 - miner.weight)) / 1000);
+                    // 抓到矿物之后刷新游戏背景
+                    this.playground.game_map.game_background.render();
                 }
             } else {
                 this.moved = this.base_moved * 2;  // 钩子收回时速度更快

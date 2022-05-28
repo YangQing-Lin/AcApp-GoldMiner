@@ -1,4 +1,4 @@
-import { AcGameObject } from "/static/js/src/playground/ac_game_objects/zbase.js";
+import { AcGameObject } from "https://app1695.acapp.acwing.com.cn:4434/static/js/src/playground/ac_game_objects/zbase.js";
 
 export class Miner extends AcGameObject {
     constructor(playground, x, y) {

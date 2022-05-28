@@ -2,16 +2,15 @@ import { AcGameObject } from "/static/js/src/playground/ac_game_objects/zbase.js
 import { Mineral } from "/static/js/src/playground/mineral/zbase.js";
 
 export class GameBackground extends AcGameObject {
-    constructor(root, playground, game_background_ctx) {
+    constructor(playground, game_background_ctx) {
         super();
-        this.root = root;
         this.playground = playground;
         this.ctx = game_background_ctx;
         this.is_start = false;
         this.time = 0;
 
         this.eps = 0.01;
-        this.base_scale = 1140;  // 和矿物像素绑定的基准，用于放大和缩小矿物
+        this.base_scale = this.playground.base_scale;  // 和矿物像素绑定的基准，用于放大和缩小矿物
 
         this.load_image();
         this.add_POS();
@@ -27,10 +26,6 @@ export class GameBackground extends AcGameObject {
         }
     }
 
-    late_start() {
-
-    }
-
     resize() {
         this.ctx.canvas.width = this.playground.width;
         this.ctx.canvas.height = this.playground.height;
@@ -38,6 +33,7 @@ export class GameBackground extends AcGameObject {
         this.render();
     }
 
+    // 随机绘制10个矿物
     test_draw_minerable() {
         if (!this.playground.players || this.playground.players.length === 0) {
             return false;
@@ -60,6 +56,7 @@ export class GameBackground extends AcGameObject {
                 random_y = 0;
 
             // 循环判断随机生成的是否合法，角度也要重新生成，因为可能一排都占满了
+            // 第一次循环一定不会成功
             while (!this.is_create_collision(random_x, random_y, random_length, min_length, mineral_name)) {
                 // 随机选择一个矿物
                 mineral_name = this.MINERS_NAME[Math.floor(Math.random() * this.MINERS_NAME.length)];
@@ -77,7 +74,7 @@ export class GameBackground extends AcGameObject {
             }
 
             // 生成随机定点的矿物
-            this.playground.miners.push(new Mineral(this.playground, random_x, random_y, mineral_name));
+            this.playground.miners.push(new Mineral(this.playground, random_x, random_y, mineral_name, this.MINERS[mineral_name]));
         }
 
         console.log("random times:", random_times);
@@ -172,6 +169,10 @@ export class GameBackground extends AcGameObject {
         this.skull.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/skull-sheet0.png";
         this.diamond = new Image();
         this.diamond.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/diamond-sheet0.png";
+        this.tnt = new Image();
+        this.tnt.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/tnt-sheet0.png";
+        this.bag = new Image();
+        this.bag.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/bag-sheet0.png";
 
         this.images = [
             this.groundtile, this.purpletile, this.bgtile1, this.bgtile2,
@@ -179,7 +180,7 @@ export class GameBackground extends AcGameObject {
             this.gamepatch, this.miner_roll_sheet0,
 
             this.gold_1, this.gold_2, this.gold_3, this.gold_4, this.rock_1, this.rock_2,
-            this.bone, this.skull, this.diamond,
+            this.bone, this.skull, this.diamond, this.tnt, this.bag,
         ];
     }
 
@@ -197,20 +198,25 @@ export class GameBackground extends AcGameObject {
         this.POS["gamepatch_tile"] = [56, 0, 14, 64];
 
 
-        // 1：引用的图片
-        // 2：价格
-        // 3：旋转角度（一般用不到，后面如果所有矿物都同一个方向觉得单调可以加个随机值）
-        // 4：碰撞体积半径
+        // 这里有个很奇怪的现象，如果把下面的"this.base_scale * 920"全部换成"miner_volume_scale"的话就会大大增加随机生成矿物时重合的概率，改回来就又正常了，搞不懂是为什么，难道"this.base_scale"会在使用一次之后改变买嘛？
+        let miner_volume_scale = this.base_scale * 920;
         this.MINERS = new Array();
-        this.MINERS["gold_1"] = [this.gold_1, 30, 0 * rad, 0.014 / this.base_scale * 920];
-        this.MINERS["gold_2"] = [this.gold_2, 100, 0 * rad, 0.029 / this.base_scale * 920];
-        this.MINERS["gold_3"] = [this.gold_3, 250, 0 * rad, 0.06 / this.base_scale * 920];
-        this.MINERS["gold_4"] = [this.gold_4, 500, 0 * rad, 0.076 / this.base_scale * 920];
-        this.MINERS["rock_1"] = [this.rock_1, 11, 0 * rad, 0.03 / this.base_scale * 920];
-        this.MINERS["rock_2"] = [this.rock_2, 20, 0 * rad, 0.033 / this.base_scale * 920];
-        this.MINERS["bone"] = [this.bone, 7, 0 * rad, 0.024 / this.base_scale * 920];
-        this.MINERS["skull"] = [this.skull, 20, 0 * rad, 0.024 / this.base_scale * 920];
-        this.MINERS["diamond"] = [this.diamond, 500, 0 * rad, 0.016 / this.base_scale * 920];
+        // 0：引用的图片
+        // 1：价格
+        // 2：旋转角度（一般用不到，后面如果所有矿物都同一个方向觉得单调可以加个随机值）
+        // 3：碰撞体积半径
+        // 4：矿物质量
+        this.MINERS["gold_1"] = [this.gold_1, 30, 0 * rad, 0.014 / this.base_scale * 920, 500];
+        this.MINERS["gold_2"] = [this.gold_2, 100, 0 * rad, 0.029 / this.base_scale * 920, 750];
+        this.MINERS["gold_3"] = [this.gold_3, 250, 0 * rad, 0.06 / this.base_scale * 920, 800];
+        this.MINERS["gold_4"] = [this.gold_4, 500, 0 * rad, 0.076 / this.base_scale * 920, 900];
+        this.MINERS["rock_1"] = [this.rock_1, 11, 0 * rad, 0.03 / this.base_scale * 920, 800];
+        this.MINERS["rock_2"] = [this.rock_2, 20, 0 * rad, 0.033 / this.base_scale * 920, 940];
+        this.MINERS["bone"] = [this.bone, 7, 0 * rad, 0.024 / this.base_scale * 920, 300];
+        this.MINERS["skull"] = [this.skull, 20, 0 * rad, 0.024 / this.base_scale * 920, 400];
+        this.MINERS["diamond"] = [this.diamond, 500, 0 * rad, 0.016 / this.base_scale * 920, 500];
+        this.MINERS["tnt"] = [this.tnt, 1, 0 * rad, 0.04 / this.base_scale * 920, 1];
+        this.MINERS["bag"] = [this.bag, 114, 0 * rad, 0.032 / this.base_scale * 920, 300]
 
         this.MINERS_NAME = new Array();
         for (let miner in this.MINERS) {
@@ -222,6 +228,8 @@ export class GameBackground extends AcGameObject {
         // 先清空屏幕
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
 
+        // 这里的scale不能用this.base_scale，820是调出来的最合适的值
+        // this.base_scale只用来更改矿物的碰撞半径
         let canvas = {
             width: this.ctx.canvas.width,
             height: this.ctx.canvas.height,
@@ -262,6 +270,12 @@ export class GameBackground extends AcGameObject {
     // 绘制所有矿物
     draw_all_minerals() {
         if (this.playground.miners) {
+            // 在所有矿物绘制之前绘制的东西
+            // 主要为了绘制tnt的爆炸范围，还有矿物的碰撞体积
+            for (let miner of this.playground.miners) {
+                miner.early_render();
+            }
+            // 绘制矿物的图片
             for (let miner of this.playground.miners) {
                 miner.render();
             }
@@ -308,6 +322,7 @@ export class GameBackground extends AcGameObject {
     draw_scoreboard_background_number_slot(canvas, number, icon_pos) {
         // 数字槽和图标的距离
         let spacing = 10;
+
         // 绘制数字槽的头部
         let patch_head = this.POS["gamepatch_head"];
         this.ctx.drawImage(

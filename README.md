@@ -1,6 +1,20 @@
-# 黄金矿工AcApp版
+# 黄金矿工LiveServer版
 
 ## 开发日志
+
+### 2022-05-28
+
+- 加入tnt炸毁矿物的动画
+- 编写tnt爆炸逻辑，实现了连爆
+- 解决了tnt无法炸掉所有矿物的bug
+- 调整了矿物的质量参数
+- 完成了商店顶端的数字栏
+- 完成了商店的下一关按钮
+- 成功绘制了技能图标的在售和售出样式！
+- 实现了点击购买技能的逻辑和页面展示
+![](https://picgo-yangqing.oss-cn-hangzhou.aliyuncs.com/img/20220528215608.png)
+![](https://picgo-yangqing.oss-cn-hangzhou.aliyuncs.com/img/20220528215443.png)
+![](https://picgo-yangqing.oss-cn-hangzhou.aliyuncs.com/img/202205282157627.jpg)
 
 ### 2022-05-27
 
@@ -8,6 +22,7 @@
 - 删除了一些不必要的代码
 - 绘制炸弹图标和旁边的炸弹数量
 - 实现炸弹炸毁钩子上矿物功能
+![](https://picgo-yangqing.oss-cn-hangzhou.aliyuncs.com/img/20220528102132.png)
 
 ### 2022-05-26
 
