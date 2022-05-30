@@ -83,7 +83,7 @@ export class ScoreNumber extends AcGameObject {
 
     load_image() {
         this.topfont = new Image();
-        this.topfont.src = "/static/image/playground/topfont.png";
+        this.topfont.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/topfont.png";
 
         this.images = [
             this.topfont,
