@@ -38,6 +38,7 @@ export class AcGameMenu {
         this.$single_mode.click(function () {
             outer.hide();
             outer.root.playground.show();
+            outer.root.playground.audio_start.play();
         });
         this.$settings.click(function () {
             outer.root.settings.logout_on_remote();

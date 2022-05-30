@@ -75,6 +75,7 @@ export class Explode extends AcGameObject {
             this.is_start = true;
         } else {
             this.render();
+            this.playground.audio_explode.play();
         }
     }
 
@@ -89,9 +90,9 @@ export class Explode extends AcGameObject {
 
     load_image() {
         this.explode_1 = new Image();
-        this.explode_1.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/expoanimation-sheet0.png";
+        this.explode_1.src = "/static/image/playground/expoanimation-sheet0.png";
         this.explode_2 = new Image();
-        this.explode_2.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/expoanimation-sheet1.png";
+        this.explode_2.src = "/static/image/playground/expoanimation-sheet1.png";
 
         this.images = [
             this.explode_1, this.explode_2

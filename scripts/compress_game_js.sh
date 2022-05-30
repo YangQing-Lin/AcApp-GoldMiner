@@ -25,4 +25,6 @@ uwsgi --ini /home/gold/AcApp-GoldMiner/scripts/uwsgi.ini
 
 # src -= "/static
 # src = "https://app1695.acapp.acwing.com.cn:4434/static
+# Audio-("/static
+# Audio("https://app1695.acapp.acwing.com.cn:4434/static
 # this.root.settings.photo
