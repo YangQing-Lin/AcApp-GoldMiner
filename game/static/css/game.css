@@ -1,5 +1,8 @@
 #canvasDiv canvas {
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* .canvasDiv>canvas {
