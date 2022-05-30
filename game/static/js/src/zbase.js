@@ -1,6 +1,6 @@
-import { Settings } from "https://app1695.acapp.acwing.com.cn:4434/static/js/src/settings/zbase.js";
-import { AcGameMenu } from "https://app1695.acapp.acwing.com.cn:4434/static/js/src/menu/zbase.js";
-import { AcGamePlayground } from "https://app1695.acapp.acwing.com.cn:4434/static/js/src/playground/zbase.js";
+import { AcGameMenu } from "/static/js/src/menu/zbase.js";
+import { AcGamePlayground } from "/static/js/src/playground/zbase.js";
+import { Settings } from "/static/js/src/settings/zbase.js";
 
 export class AcGame {
     constructor(id, AcWingOS) {
@@ -10,6 +10,7 @@ export class AcGame {
         this.AcWingOS = AcWingOS;
 
         // 顺序不要随便换
+        // 想要直接进入游戏就把这行注释掉（调试游戏的时候使用，一共四个地方要改）
         this.settings = new Settings(this);
         this.menu = new AcGameMenu(this);
         this.playground = new AcGamePlayground(this);
@@ -18,6 +19,7 @@ export class AcGame {
     }
 
     start() {
-
+        // 想要直接进入游戏就把这行取消注释（调试游戏的时候使用，一共四个地方要改）
+        // this.playground.show();
     }
 }

@@ -24,13 +24,22 @@ export class GameBackground extends AcGameObject {
                 img.is_load = true;
             }
         }
+
+        this.start_new_level();
+    }
+
+    start_new_level() {
+        for (let miner of this.playground.miners) {
+            miner.destroy();
+        }
+        // 生成矿物
+        this.test_draw_minerable();
+        this.render();
     }
 
     resize() {
         this.ctx.canvas.width = this.playground.width;
         this.ctx.canvas.height = this.playground.height;
-        this.test_draw_minerable();
-        this.render();
     }
 
     // 随机绘制10个矿物
@@ -111,10 +120,10 @@ export class GameBackground extends AcGameObject {
     }
 
     update() {
-        // 图片都加载好之后执行一次resize
+        // 图片都加载好之后执行一次render
         if (!this.is_start && this.is_all_images_loaded()) {
             this.is_start = true;
-            this.resize();
+            this.render();
         }
     }
 
@@ -225,6 +234,8 @@ export class GameBackground extends AcGameObject {
     }
 
     render() {
+        this.resize();
+
         // 先清空屏幕
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
 

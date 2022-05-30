@@ -2,6 +2,28 @@
 
 ## 开发日志
 
+### 2022-05-30
+
+- 绘制弹窗的数字图标和技能图标
+- 绘制确定按钮
+- 编写按钮逻辑
+- 重新编写各个页面之间的逻辑，实现游戏流程
+
+### 2022-05-29
+
+- 实现了游戏界面更改时间和页面切换功能
+- 优化界面切换逻辑，将score_number的resize整合到render里面
+- 绘制商店界面技能价格背景
+- 绘制商店技能的价格
+- 优化game_background的resize逻辑，并更改game_map里的resize
+- 实现了购买商品扣钱的逻辑，并退出商店界面的测试
+- 实现了关卡数的递增
+- 实现了应用到全局的金钱和关卡变量
+- 开始绘制弹窗
+- 更改canvas显示顺序：弹窗在最上层，明天在弹窗类里面new一个数字显示类，传入弹窗的canvas即可
+![](https://picgo-yangqing.oss-cn-hangzhou.aliyuncs.com/img/202205292327751.png)
+![](https://picgo-yangqing.oss-cn-hangzhou.aliyuncs.com/img/202205292328038.png)
+
 ### 2022-05-28
 
 - 加入tnt炸毁矿物的动画
@@ -12,6 +34,7 @@
 - 完成了商店的下一关按钮
 - 成功绘制了技能图标的在售和售出样式！
 - 实现了点击购买技能的逻辑和页面展示
+- 解决了canvas聚焦和键盘监听事件绑定失败的bug
 ![](https://picgo-yangqing.oss-cn-hangzhou.aliyuncs.com/img/20220528215608.png)
 ![](https://picgo-yangqing.oss-cn-hangzhou.aliyuncs.com/img/20220528215443.png)
 ![](https://picgo-yangqing.oss-cn-hangzhou.aliyuncs.com/img/202205282157627.jpg)

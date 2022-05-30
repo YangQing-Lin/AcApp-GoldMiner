@@ -116,7 +116,7 @@ export class Settings {
             this.getinfo_web();
             this.add_listening_events();
         } else {
-            // console.log("not known what is platform");
+            console.log("not known what is platform");
         }
     }
 
@@ -301,9 +301,9 @@ export class Settings {
                     // 打开菜单界面
                     outer.hide();
 
-                    // 暂时不显示菜单界面，直接显示游戏界面
-                    // outer.root.menu.show();
-                    outer.root.playground.show();
+                    // 想要直接进入游戏就把两行注释互换（调试游戏的时候使用，一共四个地方要改）
+                    outer.root.menu.show();
+                    // outer.root.playground.show();
                 } else {
                     outer.login();
                 }

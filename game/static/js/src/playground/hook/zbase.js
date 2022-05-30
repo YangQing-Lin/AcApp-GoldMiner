@@ -99,9 +99,9 @@ export class Hook extends AcGameObject {
     // 将抓到的价格加入到player的金钱 和 score_number的金钱里面
     add_money() {
         this.player.money += this.catched_money;
-        this.score_number.money_number += this.catched_money;
+        this.score_number.shop_money_number += this.catched_money;
         this.score_number.render();
-        console.log("add:", this.catched_money, "all:", this.player.money);
+        console.log("add:", this.catched_money, "all:", this.score_number.shop_money_number);
     }
 
     get_dist(x1, y1, x2, y2) {
@@ -136,7 +136,6 @@ export class Hook extends AcGameObject {
                     miner.is_catched = true;
                     if (miner.name === "tnt") {  // 如果抓到了tnt要进行一个特判
                         this.caught_item = "hook_tnt_fragment";
-                        // TODO 加入TNT爆炸动画和消除一定范围内的矿物
                         miner.explode_tnt();
                     } else {
                         miner.destroy();

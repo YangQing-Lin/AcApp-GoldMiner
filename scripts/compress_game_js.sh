@@ -23,5 +23,6 @@ uwsgi --ini /home/gold/AcApp-GoldMiner/scripts/uwsgi.ini
 # 启动django_channels服务   daphne -b 0.0.0.0 -p 5015 acapp.asgi:application
 # 启动匹配系统              （在match_system/src目录下） ./main.py
 
+# src -= "/static
 # src = "https://app1695.acapp.acwing.com.cn:4434/static
-# src = "https://app1695.acapp.acwing.com.cn:4434/static
+# this.root.settings.photo
