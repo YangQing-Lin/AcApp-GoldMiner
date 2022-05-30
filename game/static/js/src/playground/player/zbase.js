@@ -72,10 +72,7 @@ export class Player extends AcGameObject {
             let tx = (e.clientX - rect.left) / outer.playground.scale;
             let ty = (e.clientY - rect.top) / outer.playground.scale;
             if (e.which === 3) {
-                console.log("click right");
             } else if (e.which === 1) {
-                console.log("click left:", tx, ty);
-
                 // 各个页面点击事件计算坐标的路由
                 if (outer.playground.character === "shop") {
                     outer.shop.click_skill(tx, ty);
@@ -88,7 +85,7 @@ export class Player extends AcGameObject {
         // 重新绑定监听对象到小窗口
         // 之前的监听对象：$(window).keydown(function (e) {
         focus_canvas.keydown(function (e) {
-            console.log("key code:", e.which);
+            // console.log("key code:", e.which);
 
             if (e.which === 32 || e.which === 40) {  // 空格，出勾
                 outer.hook.tick();

@@ -77,7 +77,6 @@ export class GameBackground extends AcGameObject {
 
                 random_times += 1;
                 if (random_times >= 10000) {
-                    console.log("ERROR: too many random!!!");
                     break;
                 }
             }
@@ -85,8 +84,6 @@ export class GameBackground extends AcGameObject {
             // 生成随机定点的矿物
             this.playground.miners.push(new Mineral(this.playground, random_x, random_y, mineral_name, this.MINERS[mineral_name]));
         }
-
-        console.log("random times:", random_times);
     }
 
     // 传入：随机位置、随机角度、确定的最小长度、随机的矿物名称

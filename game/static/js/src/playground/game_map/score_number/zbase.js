@@ -123,7 +123,6 @@ export class ScoreNumber extends AcGameObject {
         }
         this.shop_money_number -= skill_price[skill_number];
         this.set_player_money_number();
-        console.log(this.shop_money_number, this.playground.players[0].money);
         this.render();
         return true;
     }

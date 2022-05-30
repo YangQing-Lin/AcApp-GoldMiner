@@ -116,7 +116,7 @@ export class Settings {
             this.getinfo_web();
             this.add_listening_events();
         } else {
-            console.log("not known what is platform");
+            // console.log("not known what is platform");
         }
     }
 

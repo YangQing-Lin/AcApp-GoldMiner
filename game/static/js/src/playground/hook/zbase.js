@@ -101,7 +101,6 @@ export class Hook extends AcGameObject {
         this.player.money += this.catched_money;
         this.score_number.shop_money_number += this.catched_money;
         this.score_number.render();
-        console.log("add:", this.catched_money, "all:", this.score_number.shop_money_number);
     }
 
     get_dist(x1, y1, x2, y2) {
@@ -286,7 +285,6 @@ export class Hook extends AcGameObject {
                 this.ropetile.width * canvas.scale,
                 this.ropetile.height * canvas.scale
             );
-            // console.log(Math.cos(angle));
         }
         this.ctx.restore();
     }

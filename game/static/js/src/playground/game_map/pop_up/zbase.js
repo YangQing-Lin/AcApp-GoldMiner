@@ -40,7 +40,6 @@ export class PopUp extends AcGameObject {
         // 不能把score_number.render加到this.render里面
         // 因为score_number.render里面有pop_up.render，会死循环
         this.score_number.render();
-        console.log("in start new pop up", this.score_number.shop_money_number);
     }
 
     add_POS() {
@@ -101,7 +100,6 @@ export class PopUp extends AcGameObject {
             ) {
                 if (i === 0) {
                     // 玩家点击kluiyx
-                    console.log("player click start game!!!", this.next_window);
                     if (this.next_window === "shop") {
                         this.playground.character = "shop";
                         this.playground.game_map.shop.start_new_shop();

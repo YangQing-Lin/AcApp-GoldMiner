@@ -52,7 +52,6 @@ export class GameMap extends AcGameObject {
         this.$canvasDiv.append(this.$score_number_canvas);
         this.$canvasDiv.append(this.$pop_up_canvas);
 
-        console.log("append canvas div");
         this.playground.$playground.append(this.$canvasDiv);
     }
 

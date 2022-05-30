@@ -159,7 +159,6 @@ export class Shop extends AcGameObject {
             ) {
                 if (i === 5) {
                     // 玩家点了下一关！
-                    console.log("player click next!!!");
                     this.playground.character = "pop up";
                     this.playground.game_map.start_new_level();
                     this.clear();  // 刷新商店canvas
@@ -167,12 +166,10 @@ export class Shop extends AcGameObject {
                     // 玩家买了一个技能！
                     let is_buy_success = score_number.player_buy_skill(i);
                     if (is_buy_success) {
-                        console.log("player buy skill:", i);
                         this.shop_skill_is_selling[i] = false;
                         this.shop_skill_is_sold[i] = true;
                         this.render();  // 刷新商店canvas
                     } else {
-                        console.log("player buy skill false:", i);
                     }
                 }
                 break;
