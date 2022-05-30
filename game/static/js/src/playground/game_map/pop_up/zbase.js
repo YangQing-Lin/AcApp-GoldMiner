@@ -40,7 +40,6 @@ export class PopUp extends AcGameObject {
         // 不能把score_number.render加到this.render里面
         // 因为score_number.render里面有pop_up.render，会死循环
         this.score_number.render();
-        console.log("in start new pop up", this.score_number.shop_money_number);
     }
 
     add_POS() {
@@ -76,13 +75,13 @@ export class PopUp extends AcGameObject {
 
     load_image() {
         this.pop_up_background = new Image();
-        this.pop_up_background.src = "/static/image/playground/popup-sheet0.png";
+        this.pop_up_background.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/popup-sheet0.png";
         this.shop_skill_items = new Image();
-        this.shop_skill_items.src = "/static/image/playground/shopitems-sheet0.png";
+        this.shop_skill_items.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/shopitems-sheet0.png";
         this.button_background = new Image();
-        this.button_background.src = "/static/image/playground/button-sheet0.png";
+        this.button_background.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/button-sheet0.png";
         this.button_icon = new Image();
-        this.button_icon.src = "/static/image/playground/popupbuttons-sheet1.png";
+        this.button_icon.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/popupbuttons-sheet1.png";
 
         this.images = [
             this.pop_up_background, this.shop_skill_items, this.button_background,
@@ -102,10 +101,12 @@ export class PopUp extends AcGameObject {
                 this.playground.audio_pop.play();
                 if (i === 0) {
                     // 玩家点击按钮
-                    console.log("player click start game!!!", this.next_window);
                     if (this.next_window === "shop") {
                         this.playground.character = "shop";
                         this.playground.game_map.shop.start_new_shop();
+                        // 在进入商店的时候更新地图矿物，因为到游戏界面前的弹窗界面是半透明的
+                        // 如果在游戏界面开始时更新矿物就会很明显看到矿物重新生成了
+                        this.playground.game_map.game_background.start_new_level();
                     } else if (this.next_window === "game") {
                         this.playground.character = "game";
                         this.playground.game_map.start_new_level();

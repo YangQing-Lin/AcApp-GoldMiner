@@ -29,9 +29,6 @@ export class GameBackground extends AcGameObject {
     }
 
     start_new_level() {
-        for (let miner of this.playground.miners) {
-            miner.destroy();
-        }
         // 生成矿物
         this.test_draw_minerable();
         this.render();
@@ -44,6 +41,12 @@ export class GameBackground extends AcGameObject {
 
     // 随机绘制10个矿物
     test_draw_minerable() {
+        // 先清空游戏地图上的所有矿物
+        while (this.playground.miners && this.playground.miners.length > 0) {
+            this.playground.miners[0].destroy();
+        }
+        // 输出一下表示调用了这个函数
+
         if (!this.playground.players || this.playground.players.length === 0) {
             return false;
         }
@@ -57,7 +60,7 @@ export class GameBackground extends AcGameObject {
         let random_times = 0;  // 随机循环执行了多少次
         let mineral_name = "gold_1";  // 选择的矿物名称（之后会随机一个）
 
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 20; i++) {
             // 初始化变量
             let random_length = 0,
                 random_angle = 0,
@@ -84,6 +87,7 @@ export class GameBackground extends AcGameObject {
             // 生成随机定点的矿物
             this.playground.miners.push(new Mineral(this.playground, random_x, random_y, mineral_name, this.MINERS[mineral_name]));
         }
+
     }
 
     // 传入：随机位置、随机角度、确定的最小长度、随机的矿物名称

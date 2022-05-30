@@ -26,6 +26,8 @@ export class Shop extends AcGameObject {
 
     // 打开商店窗口
     start_new_shop() {
+        this.playground.audio_music.play();  // 进入商店后播放音乐
+
         // 随机售卖技能
         for (let i = 0; i < this.shop_skill_is_selling.length; i++) {
             let random = Math.random();
@@ -67,21 +69,21 @@ export class Shop extends AcGameObject {
     load_image() {
         // 各种背景板的图片
         this.shop_top_tile = new Image();
-        this.shop_top_tile.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/shoptoptile.png";
+        this.shop_top_tile.src = "/static/image/playground/shoptoptile.png";
         this.shop_symbols = new Image();
-        this.shop_symbols.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/shopsymbols-sheet0.png";
+        this.shop_symbols.src = "/static/image/playground/shopsymbols-sheet0.png";
         this.shop_patch = new Image();
-        this.shop_patch.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/shoppatch.png";
+        this.shop_patch.src = "/static/image/playground/shoppatch.png";
         this.shop_bg = new Image();
-        this.shop_bg.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/shopbg.png";
+        this.shop_bg.src = "/static/image/playground/shopbg.png";
         this.shop_next = new Image();
-        this.shop_next.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/shopnext-sheet0.png";
+        this.shop_next.src = "/static/image/playground/shopnext-sheet0.png";
         this.shop_item_bg = new Image();
-        this.shop_item_bg.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/shopitembg-sheet0.png";
+        this.shop_item_bg.src = "/static/image/playground/shopitembg-sheet0.png";
         this.shop_skill_items = new Image();
-        this.shop_skill_items.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/shopitems-sheet0.png";
+        this.shop_skill_items.src = "/static/image/playground/shopitems-sheet0.png";
         this.shop_skill_price_background = new Image();
-        this.shop_skill_price_background.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/pricebg-sheet0.png";
+        this.shop_skill_price_background.src = "/static/image/playground/pricebg-sheet0.png";
 
         this.images = [
             this.shop_top_tile, this.shop_symbols, this.shop_patch, this.shop_bg,
@@ -157,11 +159,15 @@ export class Shop extends AcGameObject {
                 tx >= icon_pos[i][0] && ty >= icon_pos[i][1] &&
                 tx <= icon_pos[i][2] && ty <= icon_pos[i][3]
             ) {
+                this.playground.audio_pop.play();
                 if (i === 5) {
                     // 玩家点了下一关！
                     this.playground.character = "pop up";
                     this.playground.game_map.start_new_level();
                     this.clear();  // 刷新商店canvas
+
+                    this.playground.audio_music.pause();  // 商店音乐声暂停
+                    this.playground.audio_start.play();  // 播放游戏开始声音
                 } else if (this.shop_skill_is_selling[i]) {  // 购买技能需要判定技能是否在售
                     // 玩家买了一个技能！
                     let is_buy_success = score_number.player_buy_skill(i);
