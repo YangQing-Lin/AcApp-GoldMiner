@@ -37,8 +37,8 @@ export class GameMap extends AcGameObject {
 
     // 初始化所有canvas画布
     initScreen() {
-        this.$canvasDiv.css({ "width": this.playground.width });
-        this.$canvasDiv.css({ "height": this.playground.height });
+        this.$canvasDiv.css({ "width": "100%" });
+        this.$canvasDiv.css({ "height": "100%" });
         this.$canvasDiv.css({ "background-color": "lightgreed" });
         this.$canvasDiv.css({ "margin": "auto" });
 
@@ -85,6 +85,8 @@ export class GameMap extends AcGameObject {
 
     // 动态修改GameMap的长宽
     resize() {
+        this.$canvasDiv.width = this.playground.width;
+        this.$canvasDiv.height = this.playground.height;
         this.ctx.canvas.width = this.playground.width;
         this.ctx.canvas.height = this.playground.height;
         // 每次resize结束都涂一层纯黑的背景
