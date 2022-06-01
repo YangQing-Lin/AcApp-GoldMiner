@@ -94,6 +94,7 @@ export class GameMap extends AcGameObject {
         // 因为下面的对象都不是一秒更新60次的，所以直接调用render函数，render里面会自动resize
         if (this.game_background) this.game_background.render();
         if (this.score_number) this.score_number.render();
+        if (this.pop_up) this.pop_up.render();
     }
 
     update() {

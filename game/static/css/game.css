@@ -1,18 +1,13 @@
 #canvasDiv canvas {
     position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-/* .canvasDiv>canvas {
+.canvasDiv>canvas {
     position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-} */
-
-
+}
 
 .ac-game-settings {
     width: 100%;
@@ -177,11 +172,4 @@
     height: 100%;
     user-select: none;
     background-color: grey;
-}
-
-.ac-game-playground>canvas {
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }
