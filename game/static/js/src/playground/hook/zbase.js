@@ -230,13 +230,13 @@ export class Hook extends AcGameObject {
 
     load_image() {
         this.hook_sheet1 = new Image();
-        this.hook_sheet1.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/hook-sheet1.png";
+        this.hook_sheet1.src = "/static/image/playground/hook-sheet1.png";
 
         this.hook_sheet0 = new Image();
-        this.hook_sheet0.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/hook-sheet0.png";
+        this.hook_sheet0.src = "/static/image/playground/hook-sheet0.png";
 
         this.ropetile = new Image();
-        this.ropetile.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/ropetile.png";
+        this.ropetile.src = "/static/image/playground/ropetile.png";
 
         this.images = [
             this.hook_sheet1, this.hook_sheet0, this.ropetile,
@@ -251,12 +251,7 @@ export class Hook extends AcGameObject {
         // 5：引用的图片
         // 6：价格
         this.POS = new Array();
-        this.POS["hook"] = [
-            139, 66, 53, 36,
-            0 * rad,
-            this.hook_sheet1,
-            0
-        ];
+        this.POS["hook"] = [139, 66, 53, 36, 0 * rad, this.hook_sheet1, 0];
         this.POS["hook_gold_3"] = [0, 0, 133, 128, 2 * rad, this.hook_sheet1, 250];
         this.POS["hook_gold_1"] = [201, 113, 44, 50, 4 * rad, this.hook_sheet1, 30];
         this.POS["hook_skull"] = [145, 0, 58, 66, 4 * rad, this.hook_sheet1, 20];

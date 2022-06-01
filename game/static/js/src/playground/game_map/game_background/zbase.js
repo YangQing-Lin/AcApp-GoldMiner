@@ -17,6 +17,8 @@ export class GameBackground extends AcGameObject {
     }
 
     start() {
+        this.resize();
+
         // 给所有的图片的加载事件绑定一个变量，用于所有图片加载好后直接执行render函数
         // 因为render可能会执行很多次（改变窗口大小），所以不能把绘制图片代码放到onload里面
         for (let img of this.images) {
@@ -37,15 +39,15 @@ export class GameBackground extends AcGameObject {
     resize() {
         this.ctx.canvas.width = this.playground.width;
         this.ctx.canvas.height = this.playground.height;
+        this.render();
     }
 
-    // 随机绘制10个矿物
+    // 随机绘制20个矿物
     test_draw_minerable() {
         // 先清空游戏地图上的所有矿物
         while (this.playground.miners && this.playground.miners.length > 0) {
             this.playground.miners[0].destroy();
         }
-        // 输出一下表示调用了这个函数
 
         if (!this.playground.players || this.playground.players.length === 0) {
             return false;
@@ -140,49 +142,49 @@ export class GameBackground extends AcGameObject {
     load_image() {
         // 各种背景板的图片
         this.groundtile = new Image();
-        this.groundtile.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/groundtile.png";
+        this.groundtile.src = "/static/image/playground/groundtile.png";
         this.purpletile = new Image();
-        this.purpletile.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/purpletile.png";
+        this.purpletile.src = "/static/image/playground/purpletile.png";
         this.bgtile3 = new Image();
-        this.bgtile3.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/bgtile3.png";
+        this.bgtile3.src = "/static/image/playground/bgtile3.png";
         this.bgtile2 = new Image();
-        this.bgtile2.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/bgtile2.png";
+        this.bgtile2.src = "/static/image/playground/bgtile2.png";
         this.bgtile1 = new Image();
-        this.bgtile1.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/bgtile1.png";
+        this.bgtile1.src = "/static/image/playground/bgtile1.png";
         this.bgtile4 = new Image();
-        this.bgtile4.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/bgtile4.png";
+        this.bgtile4.src = "/static/image/playground/bgtile4.png";
         this.gametopbg = new Image();
-        this.gametopbg.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/gametopbg.png";
+        this.gametopbg.src = "/static/image/playground/gametopbg.png";
         this.uisymbols_sheet0 = new Image();
-        this.uisymbols_sheet0.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/uisymbols-sheet0.png";
+        this.uisymbols_sheet0.src = "/static/image/playground/uisymbols-sheet0.png";
         this.gamepatch = new Image();
-        this.gamepatch.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/gamepatch.png";
+        this.gamepatch.src = "/static/image/playground/gamepatch.png";
         this.miner_roll_sheet0 = new Image();
-        this.miner_roll_sheet0.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/miner_miner_roll-sheet0.png";
+        this.miner_roll_sheet0.src = "/static/image/playground/miner_miner_roll-sheet0.png";
 
         // 单独矿物的图片
         this.gold_1 = new Image();
-        this.gold_1.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/g1-sheet0.png";
+        this.gold_1.src = "/static/image/playground/g1-sheet0.png";
         this.gold_2 = new Image();
-        this.gold_2.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/g2-sheet0.png";
+        this.gold_2.src = "/static/image/playground/g2-sheet0.png";
         this.gold_3 = new Image();
-        this.gold_3.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/g3-sheet0.png";
+        this.gold_3.src = "/static/image/playground/g3-sheet0.png";
         this.gold_4 = new Image();
-        this.gold_4.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/g4-sheet0.png";
+        this.gold_4.src = "/static/image/playground/g4-sheet0.png";
         this.rock_1 = new Image();
-        this.rock_1.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/r1-sheet0.png";
+        this.rock_1.src = "/static/image/playground/r1-sheet0.png";
         this.rock_2 = new Image();
-        this.rock_2.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/r2-sheet0.png";
+        this.rock_2.src = "/static/image/playground/r2-sheet0.png";
         this.bone = new Image();
-        this.bone.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/bone-sheet0.png";
+        this.bone.src = "/static/image/playground/bone-sheet0.png";
         this.skull = new Image();
-        this.skull.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/skull-sheet0.png";
+        this.skull.src = "/static/image/playground/skull-sheet0.png";
         this.diamond = new Image();
-        this.diamond.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/diamond-sheet0.png";
+        this.diamond.src = "/static/image/playground/diamond-sheet0.png";
         this.tnt = new Image();
-        this.tnt.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/tnt-sheet0.png";
+        this.tnt.src = "/static/image/playground/tnt-sheet0.png";
         this.bag = new Image();
-        this.bag.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/bag-sheet0.png";
+        this.bag.src = "/static/image/playground/bag-sheet0.png";
 
         this.images = [
             this.groundtile, this.purpletile, this.bgtile1, this.bgtile2,
@@ -235,8 +237,6 @@ export class GameBackground extends AcGameObject {
     }
 
     render() {
-        this.resize();
-
         // 先清空屏幕
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
 

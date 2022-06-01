@@ -83,7 +83,7 @@ export class ScoreNumber extends AcGameObject {
 
     load_image() {
         this.topfont = new Image();
-        this.topfont.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/topfont.png";
+        this.topfont.src = "/static/image/playground/topfont.png";
 
         this.images = [
             this.topfont,
@@ -110,6 +110,7 @@ export class ScoreNumber extends AcGameObject {
     resize() {
         this.ctx.canvas.width = this.playground.width;
         this.ctx.canvas.height = this.playground.height;
+        this.render();
     }
 
     // 玩家买了一个技能之后会触发的函数
@@ -122,13 +123,11 @@ export class ScoreNumber extends AcGameObject {
             return false;
         }
         if (skill_number === 0) {
-            console.log("player buy a bomb!");
             this.shop_bomb_number += 1;
             this.set_player_bomb_number();
         }
         this.shop_money_number -= skill_price[skill_number];
         this.set_player_money_number();
-        console.log(this.shop_money_number, this.playground.players[0].money);
         this.render();
         return true;
     }
@@ -162,7 +161,6 @@ export class ScoreNumber extends AcGameObject {
     }
 
     render() {
-        this.resize();
         this.get_player_money_number();
         this.get_player_bomb_number();
         let canvas = {

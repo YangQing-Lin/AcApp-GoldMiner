@@ -55,6 +55,7 @@ export class Shop extends AcGameObject {
     resize() {
         this.ctx.canvas.width = this.playground.width;
         this.ctx.canvas.height = this.playground.height;
+        this.render();
     }
 
     is_all_images_loaded() {
@@ -69,21 +70,21 @@ export class Shop extends AcGameObject {
     load_image() {
         // 各种背景板的图片
         this.shop_top_tile = new Image();
-        this.shop_top_tile.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/shoptoptile.png";
+        this.shop_top_tile.src = "/static/image/playground/shoptoptile.png";
         this.shop_symbols = new Image();
-        this.shop_symbols.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/shopsymbols-sheet0.png";
+        this.shop_symbols.src = "/static/image/playground/shopsymbols-sheet0.png";
         this.shop_patch = new Image();
-        this.shop_patch.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/shoppatch.png";
+        this.shop_patch.src = "/static/image/playground/shoppatch.png";
         this.shop_bg = new Image();
-        this.shop_bg.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/shopbg.png";
+        this.shop_bg.src = "/static/image/playground/shopbg.png";
         this.shop_next = new Image();
-        this.shop_next.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/shopnext-sheet0.png";
+        this.shop_next.src = "/static/image/playground/shopnext-sheet0.png";
         this.shop_item_bg = new Image();
-        this.shop_item_bg.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/shopitembg-sheet0.png";
+        this.shop_item_bg.src = "/static/image/playground/shopitembg-sheet0.png";
         this.shop_skill_items = new Image();
-        this.shop_skill_items.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/shopitems-sheet0.png";
+        this.shop_skill_items.src = "/static/image/playground/shopitems-sheet0.png";
         this.shop_skill_price_background = new Image();
-        this.shop_skill_price_background.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/pricebg-sheet0.png";
+        this.shop_skill_price_background.src = "/static/image/playground/pricebg-sheet0.png";
 
         this.images = [
             this.shop_top_tile, this.shop_symbols, this.shop_patch, this.shop_bg,
@@ -188,7 +189,6 @@ export class Shop extends AcGameObject {
     }
 
     render() {
-        this.resize();
         // 先清空屏幕
         this.ctx.clearRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
         // 如果当前不显示商店界面就清空canvas之后直接退出函数

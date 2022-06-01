@@ -85,8 +85,6 @@ export class GameMap extends AcGameObject {
 
     // 动态修改GameMap的长宽
     resize() {
-        this.$canvasDiv.width = this.playground.width;
-        this.$canvasDiv.height = this.playground.height;
         this.ctx.canvas.width = this.playground.width;
         this.ctx.canvas.height = this.playground.height;
         // 每次resize结束都涂一层纯黑的背景
@@ -94,9 +92,10 @@ export class GameMap extends AcGameObject {
         this.ctx.fillRect(0, 0, this.ctx.canvas.width, this.ctx.canvas.height);
 
         // 因为下面的对象都不是一秒更新60次的，所以直接调用render函数，render里面会自动resize
-        if (this.game_background) this.game_background.render();
-        if (this.score_number) this.score_number.render();
-        if (this.pop_up) this.pop_up.render();
+        if (this.game_background) this.game_background.resize();
+        if (this.score_number) this.score_number.resize();
+        if (this.pop_up) this.pop_up.resize();
+        if (this.shop) this.shop.resize();
     }
 
     update() {

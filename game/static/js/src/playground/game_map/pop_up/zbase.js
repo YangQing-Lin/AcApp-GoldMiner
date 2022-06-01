@@ -75,13 +75,13 @@ export class PopUp extends AcGameObject {
 
     load_image() {
         this.pop_up_background = new Image();
-        this.pop_up_background.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/popup-sheet0.png";
+        this.pop_up_background.src = "/static/image/playground/popup-sheet0.png";
         this.shop_skill_items = new Image();
-        this.shop_skill_items.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/shopitems-sheet0.png";
+        this.shop_skill_items.src = "/static/image/playground/shopitems-sheet0.png";
         this.button_background = new Image();
-        this.button_background.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/button-sheet0.png";
+        this.button_background.src = "/static/image/playground/button-sheet0.png";
         this.button_icon = new Image();
-        this.button_icon.src = "https://app1695.acapp.acwing.com.cn:4434/static/image/playground/popupbuttons-sheet1.png";
+        this.button_icon.src = "/static/image/playground/popupbuttons-sheet1.png";
 
         this.images = [
             this.pop_up_background, this.shop_skill_items, this.button_background,
@@ -109,7 +109,9 @@ export class PopUp extends AcGameObject {
                         this.playground.game_map.game_background.start_new_level();
                     } else if (this.next_window === "game") {
                         this.playground.character = "game";
-                        this.playground.game_map.start_new_level();
+                        // 在游戏刚开始和一局刚结束时已经执行过game_map.start_new_level了
+                        // 所以这里不需要重复执行，否则关卡数会多算
+                        // this.playground.game_map.start_new_level();
                     }
                     this.clear();
                 }
@@ -141,6 +143,9 @@ export class PopUp extends AcGameObject {
     resize() {
         this.ctx.canvas.width = this.playground.width;
         this.ctx.canvas.height = this.playground.height;
+        this.render();
+        // 这样调整窗口大小后数字就不会消失了
+        if (this.score_number) this.score_number.resize();
     }
 
     clear() {
@@ -148,7 +153,6 @@ export class PopUp extends AcGameObject {
     }
 
     render() {
-        this.resize();
         let canvas = {
             width: this.ctx.canvas.width,
             height: this.ctx.canvas.height,
