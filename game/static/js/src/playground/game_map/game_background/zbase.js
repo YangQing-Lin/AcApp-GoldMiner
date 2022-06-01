@@ -142,49 +142,49 @@ export class GameBackground extends AcGameObject {
     load_image() {
         // 各种背景板的图片
         this.groundtile = new Image();
-        this.groundtile.src = "/static/image/playground/groundtile.png";
+        this.groundtile.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/groundtile.png";
         this.purpletile = new Image();
-        this.purpletile.src = "/static/image/playground/purpletile.png";
+        this.purpletile.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/purpletile.png";
         this.bgtile3 = new Image();
-        this.bgtile3.src = "/static/image/playground/bgtile3.png";
+        this.bgtile3.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/bgtile3.png";
         this.bgtile2 = new Image();
-        this.bgtile2.src = "/static/image/playground/bgtile2.png";
+        this.bgtile2.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/bgtile2.png";
         this.bgtile1 = new Image();
-        this.bgtile1.src = "/static/image/playground/bgtile1.png";
+        this.bgtile1.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/bgtile1.png";
         this.bgtile4 = new Image();
-        this.bgtile4.src = "/static/image/playground/bgtile4.png";
+        this.bgtile4.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/bgtile4.png";
         this.gametopbg = new Image();
-        this.gametopbg.src = "/static/image/playground/gametopbg.png";
+        this.gametopbg.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/gametopbg.png";
         this.uisymbols_sheet0 = new Image();
-        this.uisymbols_sheet0.src = "/static/image/playground/uisymbols-sheet0.png";
+        this.uisymbols_sheet0.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/uisymbols-sheet0.png";
         this.gamepatch = new Image();
-        this.gamepatch.src = "/static/image/playground/gamepatch.png";
+        this.gamepatch.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/gamepatch.png";
         this.miner_roll_sheet0 = new Image();
-        this.miner_roll_sheet0.src = "/static/image/playground/miner_miner_roll-sheet0.png";
+        this.miner_roll_sheet0.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/miner_miner_roll-sheet0.png";
 
         // 单独矿物的图片
         this.gold_1 = new Image();
-        this.gold_1.src = "/static/image/playground/g1-sheet0.png";
+        this.gold_1.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/g1-sheet0.png";
         this.gold_2 = new Image();
-        this.gold_2.src = "/static/image/playground/g2-sheet0.png";
+        this.gold_2.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/g2-sheet0.png";
         this.gold_3 = new Image();
-        this.gold_3.src = "/static/image/playground/g3-sheet0.png";
+        this.gold_3.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/g3-sheet0.png";
         this.gold_4 = new Image();
-        this.gold_4.src = "/static/image/playground/g4-sheet0.png";
+        this.gold_4.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/g4-sheet0.png";
         this.rock_1 = new Image();
-        this.rock_1.src = "/static/image/playground/r1-sheet0.png";
+        this.rock_1.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/r1-sheet0.png";
         this.rock_2 = new Image();
-        this.rock_2.src = "/static/image/playground/r2-sheet0.png";
+        this.rock_2.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/r2-sheet0.png";
         this.bone = new Image();
-        this.bone.src = "/static/image/playground/bone-sheet0.png";
+        this.bone.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/bone-sheet0.png";
         this.skull = new Image();
-        this.skull.src = "/static/image/playground/skull-sheet0.png";
+        this.skull.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/skull-sheet0.png";
         this.diamond = new Image();
-        this.diamond.src = "/static/image/playground/diamond-sheet0.png";
+        this.diamond.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/diamond-sheet0.png";
         this.tnt = new Image();
-        this.tnt.src = "/static/image/playground/tnt-sheet0.png";
+        this.tnt.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/tnt-sheet0.png";
         this.bag = new Image();
-        this.bag.src = "/static/image/playground/bag-sheet0.png";
+        this.bag.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/bag-sheet0.png";
 
         this.images = [
             this.groundtile, this.purpletile, this.bgtile1, this.bgtile2,

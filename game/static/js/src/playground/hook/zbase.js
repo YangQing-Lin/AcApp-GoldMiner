@@ -230,13 +230,13 @@ export class Hook extends AcGameObject {
 
     load_image() {
         this.hook_sheet1 = new Image();
-        this.hook_sheet1.src = "/static/image/playground/hook-sheet1.png";
+        this.hook_sheet1.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/hook-sheet1.png";
 
         this.hook_sheet0 = new Image();
-        this.hook_sheet0.src = "/static/image/playground/hook-sheet0.png";
+        this.hook_sheet0.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/hook-sheet0.png";
 
         this.ropetile = new Image();
-        this.ropetile.src = "/static/image/playground/ropetile.png";
+        this.ropetile.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/ropetile.png";
 
         this.images = [
             this.hook_sheet1, this.hook_sheet0, this.ropetile,

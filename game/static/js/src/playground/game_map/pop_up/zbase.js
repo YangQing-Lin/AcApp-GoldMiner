@@ -75,13 +75,13 @@ export class PopUp extends AcGameObject {
 
     load_image() {
         this.pop_up_background = new Image();
-        this.pop_up_background.src = "/static/image/playground/popup-sheet0.png";
+        this.pop_up_background.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/popup-sheet0.png";
         this.shop_skill_items = new Image();
-        this.shop_skill_items.src = "/static/image/playground/shopitems-sheet0.png";
+        this.shop_skill_items.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/shopitems-sheet0.png";
         this.button_background = new Image();
-        this.button_background.src = "/static/image/playground/button-sheet0.png";
+        this.button_background.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/button-sheet0.png";
         this.button_icon = new Image();
-        this.button_icon.src = "/static/image/playground/popupbuttons-sheet1.png";
+        this.button_icon.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/popupbuttons-sheet1.png";
 
         this.images = [
             this.pop_up_background, this.shop_skill_items, this.button_background,
