@@ -1,6 +1,6 @@
 ![](https://picgo-yangqing.oss-cn-hangzhou.aliyuncs.com/img/202205302159076.png)
 
-## | [WEB端](https://app1695.acapp.acwing.com.cn:4434/) | [开发日志](https://www.acwing.com/blog/content/21335/) | [版本迭代](https://www.acwing.com/blog/content/21363/) |
+## | [WEB端](https://app1695.acapp.acwing.com.cn:4434/) | [GitHub](https://github.com/YangQing-Lin/GoldMiner-LiveServer) | [开发日志](https://www.acwing.com/blog/content/21335/) | [版本迭代](https://www.acwing.com/blog/content/21363/) |
 
 ## 介绍
 
@@ -16,7 +16,7 @@
 
 经过8天的紧张开发、写了3k多行代码，游戏虽然可玩性不高但总算是能玩了。（具体过程可以看[开发日志](https://www.acwing.com/blog/content/21335/)）
 
-接下来就是改一些上线之后的窗口适配问题，**并且本项目会在开发大赛结束后开源~**
+接下来就是改一些上线之后的窗口适配问题，**并且本项目会在开发大赛结束后开源** （[已经开源了~](https://github.com/YangQing-Lin/GoldMiner-LiveServer)）
 
 开源的是可以直接用LiveServer运行的版本，我自己也是在这个版本上开发，所以仓库里的代码肯定是最新的。只要更改足够多或者有重大功能更新就会实装到AcWing端。
 

@@ -16,7 +16,7 @@
     <!-- 将引入js的类型改成按照模块引入（之后引入多个js文件的时候不容易冲突，视频在Django框架课4.创建游戏界面 开头几分钟） -->
     <script type="module">
         // 只载入一个AcGame，而且不会作为全局变量
-        import { AcGame } from "{% static 'js/src/zbase-version-1.0.js' %}";
+        import { AcGame } from "{% static 'js/src/zbase-version-1.2.js' %}";
         $(document).ready(function () {
             let ac_game = new AcGame("ac_game_123");
         });
