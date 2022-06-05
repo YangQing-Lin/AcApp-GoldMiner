@@ -93,29 +93,29 @@ export class AcGamePlayground {
         this.players = [];
         this.miners = [];
         // 绘制玩家
-        this.players.push(new Player(this, this.width / 2 / this.scale, 4.3 / 16, 0.04, "me", "test", this.root.settings.photo));
+        this.players.push(new Player(this, this.width / 2 / this.scale, 4.3 / 16, 0.04, "me", "test", "https://cdn.acwing.com/media/user/profile/photo/84494_lg_29c89a778e.jpg"));
     }
 
     // 加载游戏音频
     load_audio() {
-        this.audio_bag = new Audio("https://app1695.acapp.acwing.com.cn:4434/static/audio/bag.ogg");
-        this.audio_counter = new Audio("https://app1695.acapp.acwing.com.cn:4434/static/audio/counter.ogg");
-        this.audio_explode = new Audio("https://app1695.acapp.acwing.com.cn:4434/static/audio/explode.ogg");
-        this.audio_fail = new Audio("https://app1695.acapp.acwing.com.cn:4434/static/audio/fail.ogg");
-        this.audio_getbomb = new Audio("https://app1695.acapp.acwing.com.cn:4434/static/audio/getbomb.ogg");
-        this.audio_getpower = new Audio("https://app1695.acapp.acwing.com.cn:4434/static/audio/getpower.ogg");
-        this.audio_good = new Audio("https://app1695.acapp.acwing.com.cn:4434/static/audio/good.ogg");
-        this.audio_great = new Audio("https://app1695.acapp.acwing.com.cn:4434/static/audio/great.ogg");
-        this.audio_low = new Audio("https://app1695.acapp.acwing.com.cn:4434/static/audio/low.ogg");
-        this.audio_machine = new Audio("https://app1695.acapp.acwing.com.cn:4434/static/audio/machine.ogg");
-        this.audio_music = new Audio("https://app1695.acapp.acwing.com.cn:4434/static/audio/music.ogg");
-        this.audio_point = new Audio("https://app1695.acapp.acwing.com.cn:4434/static/audio/point.ogg");
-        this.audio_pop = new Audio("https://app1695.acapp.acwing.com.cn:4434/static/audio/pop.ogg");
-        this.audio_puff = new Audio("https://app1695.acapp.acwing.com.cn:4434/static/audio/puff.ogg");
-        this.audio_purchase = new Audio("https://app1695.acapp.acwing.com.cn:4434/static/audio/purchase.ogg");
-        this.audio_rattle = new Audio("https://app1695.acapp.acwing.com.cn:4434/static/audio/rattle.ogg");
-        this.audio_start = new Audio("https://app1695.acapp.acwing.com.cn:4434/static/audio/start.ogg");
-        this.audio_success = new Audio("https://app1695.acapp.acwing.com.cn:4434/static/audio/success.ogg");
+        this.audio_bag = new Audio("/static/audio/bag.ogg");
+        this.audio_counter = new Audio("/static/audio/counter.ogg");
+        this.audio_explode = new Audio("/static/audio/explode.ogg");
+        this.audio_fail = new Audio("/static/audio/fail.ogg");
+        this.audio_getbomb = new Audio("/static/audio/getbomb.ogg");
+        this.audio_getpower = new Audio("/static/audio/getpower.ogg");
+        this.audio_good = new Audio("/static/audio/good.ogg");
+        this.audio_great = new Audio("/static/audio/great.ogg");
+        this.audio_low = new Audio("/static/audio/low.ogg");
+        this.audio_machine = new Audio("/static/audio/machine.ogg");
+        this.audio_music = new Audio("/static/audio/music.ogg");
+        this.audio_point = new Audio("/static/audio/point.ogg");
+        this.audio_pop = new Audio("/static/audio/pop.ogg");
+        this.audio_puff = new Audio("/static/audio/puff.ogg");
+        this.audio_purchase = new Audio("/static/audio/purchase.ogg");
+        this.audio_rattle = new Audio("/static/audio/rattle.ogg");
+        this.audio_start = new Audio("/static/audio/start.ogg");
+        this.audio_success = new Audio("/static/audio/success.ogg");
     }
 
     hide() {  // 关闭playground界面

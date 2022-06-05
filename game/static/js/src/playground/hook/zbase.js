@@ -51,15 +51,16 @@ export class Hook extends AcGameObject {
     }
 
     tick() {
-        if (this.direction_flag > 2) {
+        if (this.direction_flag > 2 || this.playground.character !== "game") {
             return false;
         }
         this.direction_tmp = this.direction_flag;
         this.direction_flag = 3;
         this.moved = this.base_moved;
 
-        // 设置播放声音的时间控制变量
+        // 设置锁链播放声音的时间控制变量
         let mp3 = this.playground.audio_machine;
+        // 控制声音轮播的两个时间参数
         this.time_left = 0;
         this.last_time_left = 0;
     }
@@ -230,13 +231,13 @@ export class Hook extends AcGameObject {
 
     load_image() {
         this.hook_sheet1 = new Image();
-        this.hook_sheet1.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/hook-sheet1.png";
+        this.hook_sheet1.src = "/static/image/playground/hook-sheet1.png";
 
         this.hook_sheet0 = new Image();
-        this.hook_sheet0.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/hook-sheet0.png";
+        this.hook_sheet0.src = "/static/image/playground/hook-sheet0.png";
 
         this.ropetile = new Image();
-        this.ropetile.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/ropetile.png";
+        this.ropetile.src = "/static/image/playground/ropetile.png";
 
         this.images = [
             this.hook_sheet1, this.hook_sheet0, this.ropetile,
@@ -319,7 +320,6 @@ export class Hook extends AcGameObject {
                 this.ropetile.width * canvas.scale,
                 this.ropetile.height * canvas.scale
             );
-            // console.log(Math.cos(angle));
         }
         this.ctx.restore();
     }
