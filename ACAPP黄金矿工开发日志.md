@@ -2,6 +2,20 @@
 
 ## 开发日志
 
+### 2022-06-05
+
+- 修复弹窗界面可以抓矿物的BUG
+- 修复卡商店界面无限时间BUG
+![image-20220605154622702](https://picgo-yangqing.oss-cn-hangzhou.aliyuncs.com/img/202206051546775.png)
+
+### 2022-06-01
+
+- 修复窗口y轴偏移量的问题
+- 修复商店界面固定BUG
+- 修复关卡数每次会多加1的BUG
+- 修复弹窗界面调整窗口大小会导致数字消失的BUG
+![](https://picgo-yangqing.oss-cn-hangzhou.aliyuncs.com/img/202206011053923.png)
+
 ### 2022-05-30
 
 - 绘制弹窗的数字图标和技能图标

@@ -69,21 +69,21 @@ export class Shop extends AcGameObject {
     load_image() {
         // 各种背景板的图片
         this.shop_top_tile = new Image();
-        this.shop_top_tile.src = "/static/image/playground/shoptoptile.png";
+        this.shop_top_tile.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/shoptoptile.png";
         this.shop_symbols = new Image();
-        this.shop_symbols.src = "/static/image/playground/shopsymbols-sheet0.png";
+        this.shop_symbols.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/shopsymbols-sheet0.png";
         this.shop_patch = new Image();
-        this.shop_patch.src = "/static/image/playground/shoppatch.png";
+        this.shop_patch.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/shoppatch.png";
         this.shop_bg = new Image();
-        this.shop_bg.src = "/static/image/playground/shopbg.png";
+        this.shop_bg.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/shopbg.png";
         this.shop_next = new Image();
-        this.shop_next.src = "/static/image/playground/shopnext-sheet0.png";
+        this.shop_next.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/shopnext-sheet0.png";
         this.shop_item_bg = new Image();
-        this.shop_item_bg.src = "/static/image/playground/shopitembg-sheet0.png";
+        this.shop_item_bg.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/shopitembg-sheet0.png";
         this.shop_skill_items = new Image();
-        this.shop_skill_items.src = "/static/image/playground/shopitems-sheet0.png";
+        this.shop_skill_items.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/shopitems-sheet0.png";
         this.shop_skill_price_background = new Image();
-        this.shop_skill_price_background.src = "/static/image/playground/pricebg-sheet0.png";
+        this.shop_skill_price_background.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/pricebg-sheet0.png";
 
         this.images = [
             this.shop_top_tile, this.shop_symbols, this.shop_patch, this.shop_bg,

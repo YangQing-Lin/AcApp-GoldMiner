@@ -98,24 +98,24 @@ export class AcGamePlayground {
 
     // 加载游戏音频
     load_audio() {
-        this.audio_bag = new Audio("/static/audio/bag.ogg");
-        this.audio_counter = new Audio("/static/audio/counter.ogg");
-        this.audio_explode = new Audio("/static/audio/explode.ogg");
-        this.audio_fail = new Audio("/static/audio/fail.ogg");
-        this.audio_getbomb = new Audio("/static/audio/getbomb.ogg");
-        this.audio_getpower = new Audio("/static/audio/getpower.ogg");
-        this.audio_good = new Audio("/static/audio/good.ogg");
-        this.audio_great = new Audio("/static/audio/great.ogg");
-        this.audio_low = new Audio("/static/audio/low.ogg");
-        this.audio_machine = new Audio("/static/audio/machine.ogg");
-        this.audio_music = new Audio("/static/audio/music.ogg");
-        this.audio_point = new Audio("/static/audio/point.ogg");
-        this.audio_pop = new Audio("/static/audio/pop.ogg");
-        this.audio_puff = new Audio("/static/audio/puff.ogg");
-        this.audio_purchase = new Audio("/static/audio/purchase.ogg");
-        this.audio_rattle = new Audio("/static/audio/rattle.ogg");
-        this.audio_start = new Audio("/static/audio/start.ogg");
-        this.audio_success = new Audio("/static/audio/success.ogg");
+        this.audio_bag = new Audio("https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/audio/bag.ogg");
+        this.audio_counter = new Audio("https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/audio/counter.ogg");
+        this.audio_explode = new Audio("https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/audio/explode.ogg");
+        this.audio_fail = new Audio("https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/audio/fail.ogg");
+        this.audio_getbomb = new Audio("https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/audio/getbomb.ogg");
+        this.audio_getpower = new Audio("https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/audio/getpower.ogg");
+        this.audio_good = new Audio("https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/audio/good.ogg");
+        this.audio_great = new Audio("https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/audio/great.ogg");
+        this.audio_low = new Audio("https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/audio/low.ogg");
+        this.audio_machine = new Audio("https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/audio/machine.ogg");
+        this.audio_music = new Audio("https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/audio/music.ogg");
+        this.audio_point = new Audio("https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/audio/point.ogg");
+        this.audio_pop = new Audio("https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/audio/pop.ogg");
+        this.audio_puff = new Audio("https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/audio/puff.ogg");
+        this.audio_purchase = new Audio("https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/audio/purchase.ogg");
+        this.audio_rattle = new Audio("https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/audio/rattle.ogg");
+        this.audio_start = new Audio("https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/audio/start.ogg");
+        this.audio_success = new Audio("https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/audio/success.ogg");
     }
 
     hide() {  // 关闭playground界面
