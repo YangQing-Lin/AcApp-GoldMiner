@@ -2,12 +2,8 @@
 
 
 rsync -avzu --progress \
-/mnt/d/Project/AcWing/AcApp-GoldMiner/game/static/js/src/ \
-gold:AcApp-GoldMiner/game/static/js/src/
-
-rsync -avzu --progress \
-/mnt/d/Project/AcWing/AcApp-GoldMiner/game/static/css/ \
-gold:AcApp-GoldMiner/game/static/css/
+/mnt/d/Project/AcWing/AcApp-GoldMiner/game/static/ \
+gold:AcApp-GoldMiner/game/static/
 
 rsync -avzu --progress \
 /mnt/d/Project/AcWing/AcApp-GoldMiner/game/templates/multiends/web.html \

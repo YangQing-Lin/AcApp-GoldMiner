@@ -19,6 +19,9 @@ export class AcGame {
     }
 
     start() {
+        // 覆盖console.log函数来隐藏所有输出
+        console.log = function () { };
+
         // 想要直接进入游戏就把这行取消注释（调试游戏的时候使用，一共四个地方要改）
         // this.playground.show();
     }

@@ -6,7 +6,7 @@ JS_PATH_SRC=${JS_PATH}src/
 
 JS_FILE_NAME=game-version-1.1.js
 
-find . $JS_PATH_SRC -type f -name '*.js' | sort | xargs cat > ${JS_PATH_DIST}${JS_FILE_NAME}
+# find . $JS_PATH_SRC -type f -name '*.js' | sort | xargs cat > ${JS_PATH_DIST}${JS_FILE_NAME}
 # find . $JS_PATH_SRC -type f -name '*.js' | sort | xargs cat | terser -c -m > ${JS_PATH_DIST}${JS_FILE_NAME}
 
 # 归档静态文件

@@ -6,7 +6,7 @@
 
 - 修复弹窗界面可以抓矿物的BUG
 - 修复卡商店界面无限时间BUG
-![](https://picgo-yangqing.oss-cn-hangzhou.aliyuncs.com/img/202206051640700.png)
+- 覆盖console.log函数
 
 ### 2022-06-01
 
