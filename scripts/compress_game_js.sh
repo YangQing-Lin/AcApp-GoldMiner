@@ -31,4 +31,6 @@ uwsgi --ini /home/gold/AcApp-GoldMiner/scripts/uwsgi.ini
 # Audio("https://app1695.acapp.acwing.com.cn:4434/static
 # Audio("https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner
 
+# this.time_left = 10000;
+
 # this.root.settings.photo

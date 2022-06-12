@@ -65,7 +65,23 @@ export class Hook extends AcGameObject {
         this.last_time_left = 0;
     }
 
+    // 重置钩子到初始状态
+    fresh() {
+        // 1：向左摆动，2：向右摆动，3：发射钩子，4：收回钩子
+        this.direction_flag = 1;
+        // 抓到的物品
+        this.caught_item = "hook";
+        this.tile_length = this.min_tile_length;
+        this.catched = false;  // 是否抓到东西
+        this.catched_money = 0;
+    }
+
     update() {
+        // 不是游戏界面就不更新钩子
+        if (this.playground.character !== "game") {
+            return false;
+        }
+
         this.update_tile_length();
         this.update_angle();
         this.update_position();
@@ -320,6 +336,7 @@ export class Hook extends AcGameObject {
                 this.ropetile.width * canvas.scale,
                 this.ropetile.height * canvas.scale
             );
+            // console.log(Math.cos(angle));
         }
         this.ctx.restore();
     }

@@ -10,7 +10,9 @@ export class ScoreNumber extends AcGameObject {
         this.time = 0;
         this.images = [];
 
-        this.target_number = 456;
+        // 观察了4399游戏每局目标分数的规律，发现分数每局增加量是个等差数列，每次加270
+        this.increment_target_number = 275;
+        this.target_number = 375;
         this.level_number = 0;
         this.time_left = 60;
 
@@ -38,7 +40,17 @@ export class ScoreNumber extends AcGameObject {
     // 开始新的一局时会在game_map.start_new_level()函数里面触发
     start_new_level() {
         this.level_number += 1;
+        this.update_target_number();
         this.render();
+    }
+
+    // 更新目标分数
+    update_target_number() {
+        this.target_number += this.increment_target_number;
+        // 超过10关后每关目标分增长量固定，2705
+        if (this.level_number < 10) {
+            this.increment_target_number += 270;
+        }
     }
 
     add_POS() {
@@ -63,8 +75,8 @@ export class ScoreNumber extends AcGameObject {
         // 2: 数字图片的缩放比例
         this.POS["money"] = [100, 30, 1];
         this.POS["target"] = [100, 110, 1];
-        this.POS["level"] = [800, 30, 1];
-        this.POS["timer"] = [800, 110, 1];
+        this.POS["level"] = [840, 30, 1];
+        this.POS["timer"] = [840, 110, 1];
 
         this.POS["shop_money"] = [650, 30, 0.6];
         this.POS["shop_bomb"] = [365, 30, 0.6];
@@ -170,15 +182,18 @@ export class ScoreNumber extends AcGameObject {
         };
 
         if (this.root_name === "pop up") {
-            // 绘制数字前需要重新绘制一下背景板，不这样背景板就显示不出来，不清楚bug在哪
-            this.playground.game_map.pop_up.render();
-            this.render_pop_up_score_number(canvas);
+            if (this.playground.character === "pop up") {
+                // 绘制数字前需要重新绘制一下背景板，不这样背景板就显示不出来，不清楚bug在哪
+                this.playground.game_map.pop_up.render();
+                this.render_pop_up_score_number(canvas);
+            }
         } else {
             this.ctx.clearRect(0, 0, canvas.width, canvas.height);
-            if (this.playground.character === "game") {
-                this.render_game_score_number(canvas);
-            } else if (this.playground.character === "shop") {
+            if (this.playground.character === "shop") {
                 this.render_shop_score_number(canvas);
+            } else {
+                // 除了商店界面之外，都要绘制游戏的数字（调整窗口大小数字就不会消失了）
+                this.render_game_score_number(canvas);
             }
         }
     }

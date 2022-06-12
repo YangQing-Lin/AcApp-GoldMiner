@@ -1,4 +1,4 @@
-![](https://picgo-yangqing.oss-cn-hangzhou.aliyuncs.com/img/202205302159076.png)
+![image-20220611194601934](https://picgo-yangqing.oss-cn-hangzhou.aliyuncs.com/img/202206111946288.png)
 
 ## | [WEB端](https://app1695.acapp.acwing.com.cn:4434/) | [GitHub](https://github.com/YangQing-Lin/GoldMiner-LiveServer) | [开发日志](https://www.acwing.com/blog/content/21335/) | [版本迭代](https://www.acwing.com/blog/content/21363/) |
 
@@ -6,6 +6,7 @@
 
 - **`↓`**：释放抓钩
 - **`↑`**：放炸弹炸毁矿物
+- **`Enter`**：开始游戏、直接开始下一局
 
 ## BUG列表
 
@@ -15,11 +16,17 @@
 - 商店界面固定 **[✅已解决]**
 - 弹窗界面仍然可以抓矿物 **[✅已解决]**
 - 卡商店界面 **[✅已解决]**
+- 游戏界面调整窗口大小会出现弹窗数字 **[✅已解决]**
+- 弹窗界面调整窗口大小游戏界面数字消失 **[✅已解决]**
+- 关卡结束后钩子还能把矿物拉回来 **[✅已解决]**
+- 退出游戏时音乐还在播放
 
 ## 待实现的功能
 
-- 每局会有新的目标
-- 抓完所有矿物自动进入下一局
+- 每局会有新的目标 **[✅已实现]**
+- 没有达到目标则游戏失败
+- 优化矿物生成范围和抓钩抓取范围
+- 抓完所有矿物自动进入下一局 **[✅已实现]**
 - 实现一个排行榜
 
 ## 介绍
