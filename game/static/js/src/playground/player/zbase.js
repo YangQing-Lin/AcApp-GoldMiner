@@ -87,7 +87,6 @@ export class Player extends AcGameObject {
         // 重新绑定监听对象到小窗口
         // 之前的监听对象：$(window).keydown(function (e) {
         focus_canvas.keydown(function (e) {
-
             if (e.which === 40) {  // ↓，出勾
                 outer.hook.tick();
                 return false;

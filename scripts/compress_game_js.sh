@@ -34,3 +34,7 @@ uwsgi --ini /home/gold/AcApp-GoldMiner/scripts/uwsgi.ini
 # this.time_left = 10000;
 
 # this.root.settings.photo
+
+# // TODO WEB端需要将下面的重启函数换成退出游戏界面
+# this.playground.hide();
+# this.playground.root.menu.show();

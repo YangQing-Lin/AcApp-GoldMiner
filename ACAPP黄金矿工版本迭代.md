@@ -1,5 +1,12 @@
 ## [应用地址](https://www.acwing.com/file_system/file/content/whole/index/content/5717667/)
 
+### game-version-1.5 (2022-06-12)
+- 添加游戏成功和失败的判定
+- 得分达标后为绿色
+- 实现游戏失败后重置数据重新开始
+- 修复settings界面一直会有menu界面的BUG
+- 主界面右下角显示版本号
+
 ### game-version-1.4 (2022-06-11)
 - 修复游戏界面调整窗口大小后会出现弹窗数字的BUG
 - 修复弹窗界面调整窗口大小后游戏界面数字消失的BUG

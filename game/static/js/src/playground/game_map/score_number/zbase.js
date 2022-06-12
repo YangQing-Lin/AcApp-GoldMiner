@@ -14,9 +14,9 @@ export class ScoreNumber extends AcGameObject {
         this.increment_target_number = 275;
         this.target_number = 375;
         this.level_number = 0;
-        this.time_left = 60;
 
-        this.shop_bomb_number = 456;
+        this.time_left = 60;
+        this.shop_bomb_number = 0;
 
         this.numbers = [];
 
@@ -37,8 +37,18 @@ export class ScoreNumber extends AcGameObject {
         }
     }
 
+    // 游戏失败后重置游戏时调用的函数
+    restart() {
+        console.log("########in score number restart:", this.root_name);
+        this.increment_target_number = 275;
+        this.target_number = 375;
+        this.level_number = 0;
+        // this.time_left = 60;
+    }
+
     // 开始新的一局时会在game_map.start_new_level()函数里面触发
     start_new_level() {
+        console.log("update level target number", this.root_name);
         this.level_number += 1;
         this.update_target_number();
         this.render();
@@ -96,9 +106,11 @@ export class ScoreNumber extends AcGameObject {
     load_image() {
         this.topfont = new Image();
         this.topfont.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/topfont.png";
+        this.gamefontgreen = new Image();
+        this.gamefontgreen.src = "https://project-static-file.oss-cn-hangzhou.aliyuncs.com/GoldMiner/image/playground/gamefontgreen.png";
 
         this.images = [
-            this.topfont,
+            this.topfont, this.gamefontgreen,
         ];
     }
 
@@ -135,11 +147,13 @@ export class ScoreNumber extends AcGameObject {
             return false;
         }
         if (skill_number === 0) {
+            console.log("player buy a bomb!");
             this.shop_bomb_number += 1;
             this.set_player_bomb_number();
         }
         this.shop_money_number -= skill_price[skill_number];
         this.set_player_money_number();
+        console.log(this.shop_money_number, this.playground.players[0].money);
         this.render();
         return true;
     }
@@ -181,6 +195,7 @@ export class ScoreNumber extends AcGameObject {
             scale: this.ctx.canvas.height / 820,
         };
 
+        console.log(this.root_name, this.playground.character);
         if (this.root_name === "pop up") {
             if (this.playground.character === "pop up") {
                 // 绘制数字前需要重新绘制一下背景板，不这样背景板就显示不出来，不清楚bug在哪
@@ -245,11 +260,16 @@ export class ScoreNumber extends AcGameObject {
 
     // 按照传入的位置绘制数字
     draw_numbers(canvas, icon_pos, spacing) {
+        let img = this.topfont;
+        // 得分达标时要把分数绘制成绿色
+        if (icon_pos === this.POS["money"] && this.shop_money_number >= this.target_number) {
+            img = this.gamefontgreen;
+        }
         // 数字槽和图标的距离
         for (let num of this.numbers) {
             let num_pos = this.POS["digital"][num];
             this.ctx.drawImage(
-                this.topfont, num_pos[0], num_pos[1],
+                img, num_pos[0], num_pos[1],
                 num_pos[2], num_pos[3],
                 canvas.scale * icon_pos[2] * (icon_pos[0] + spacing + 12),
                 canvas.scale * icon_pos[2] * (icon_pos[1] + 3),

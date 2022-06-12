@@ -14,6 +14,9 @@ export class AcGameMenu {
             退出
         </div>
     </div>
+    <div class="ac-game-version">
+        v-1.5
+    </div>
 </div>
 `);
         this.$menu.hide();
@@ -24,9 +27,6 @@ export class AcGameMenu {
         this.$settings = this.$menu.find('.ac-game-menu-field-item-settings');
 
         this.start();
-
-        // 想要直接进入游戏就把这行注释掉（调试游戏的时候使用，一共四个地方要改）
-        this.show();
     }
 
     start() {
