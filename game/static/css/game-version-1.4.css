@@ -176,8 +176,9 @@
 .ac-game-version {
     width: 4vw;
     position: relative;
-    top: 76%;
-    left: 93%;
+    text-align: center;
+    top: 72%;
+    left: 92%;
     background-color: rgb(255, 0, 0);
     font-style: italic;
 }

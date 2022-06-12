@@ -15,7 +15,7 @@ export class AcGameMenu {
         </div>
     </div>
     <div class="ac-game-version">
-        v-1.5
+        v-1.6
     </div>
 </div>
 `);

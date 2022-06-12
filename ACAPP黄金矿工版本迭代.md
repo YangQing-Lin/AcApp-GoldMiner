@@ -1,5 +1,8 @@
 ## [应用地址](https://www.acwing.com/file_system/file/content/whole/index/content/5717667/)
 
+### game-version-1.6 (2022-06-12)
+- 判断分数达标后才能下一关
+
 ### game-version-1.5 (2022-06-12)
 - 添加游戏成功和失败的判定
 - 得分达标后为绿色

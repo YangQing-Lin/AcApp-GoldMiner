@@ -59,7 +59,11 @@ export class GameBackground extends AcGameObject {
     }
 
     click_next_level_button() {
-        this.playground.game_map.time_left = 0;  // 简单粗暴，但是有效
+        console.log("player click next level button");
+        // 分数达到目标才能下一关
+        if (this.playground.players[0].money >= this.playground.game_map.score_number.target_number) {
+            this.playground.game_map.time_left = 0;  // 简单粗暴，但是有效
+        }
     }
 
     // 随机绘制20个矿物
@@ -69,6 +73,7 @@ export class GameBackground extends AcGameObject {
             this.playground.miners[0].destroy();
         }
         // 输出一下表示调用了这个函数
+        console.log("###############in test draw minerable");
 
         if (!this.playground.players || this.playground.players.length === 0) {
             return false;
@@ -103,6 +108,7 @@ export class GameBackground extends AcGameObject {
 
                 random_times += 1;
                 if (random_times >= 10000) {
+                    console.log("ERROR: too many random!!!");
                     break;
                 }
             }
@@ -111,6 +117,7 @@ export class GameBackground extends AcGameObject {
             this.playground.miners.push(new Mineral(this.playground, random_x, random_y, mineral_name, this.MINERS[mineral_name]));
         }
 
+        console.log("random times:", random_times);
     }
 
     // 传入：随机位置、随机角度、确定的最小长度、随机的矿物名称
